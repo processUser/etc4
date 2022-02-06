@@ -1,0 +1,98 @@
+
+/* 푸터 */
+.footer{
+    position: relative;
+    height: 250px;
+    align-items: flex-start;
+    padding-top: 30px;
+    background-color: #202020;
+}
+.footer .footerLogoWrap::before{
+    content: "";
+    display: block;
+    width: 180px;
+    height: 50px;
+    background: url(/res/img/common/ico_set.png) no-repeat -320px -320px;
+    background-size: 820px 800px;
+}
+.footer .footerC{}
+.footer .footerC ul{}
+.footer .footerC ul li{
+    float: left;
+}
+.footer .footerC ul li a{
+    font-size: 14px;
+    font-weight: 800;
+    color: #e2e2e2;
+}
+.footer .footerC div{
+    clear: both;
+    padding-top: 20px;
+    font-size: 22px;
+    color: #e2e2e2;
+}
+
+.footer .footerl{
+    display: flex;
+    flex-direction: column;
+}
+.footer .footerl a{
+    position: relative;
+    color: #e2e2e2;
+    font-weight: 800;
+}
+.footer .footerl a:first-child{
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+.micon::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid #e2e2e2;
+    border-bottom: 2px solid #e2e2e2;
+}
+.iconB::after{
+    margin-top: -18px;
+    transform: rotate(-45deg);
+}
+.iconT::after{
+    margin-top: -12px;
+    transform: rotate(135deg);
+}
+
+
+/* cj그룹계열사 */
+.cjGroup{
+    position: absolute;
+    left: 0;
+    bottom: 280px;
+    width: 100%;
+    background-color: #f2f2f2;
+}
+.cjGroup > ul{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 40px;
+}
+.cjGroup > ul > li{
+    font-weight: 800;
+}
+.cjGroup > ul > li:not(:first-child){
+    margin-left: 30px;
+}
+.cjGroup > ul > li > ul{padding-top: 10px;}
+.cjGroup > ul > li > ul > li{}
+.cjGroup > ul > li > ul > li:not(:first-child){
+    margin-top: 10px;
+}
+.cjGroup > ul > li > ul > li > a{
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    color: #3f3f3f;
+
+}

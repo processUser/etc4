@@ -1,0 +1,71 @@
+/* 초기화 */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+li{
+    list-style: none;
+}
+
+html, body{
+    min-width: 1180px;
+    height: 100%;
+}
+/* 중복 */
+.hide{
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+}
+.po_absolute{
+    position: absolute;    
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 70px;
+}
+
+.line::before{
+    /* li 사이 | 선 표시 */
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    margin:0 15px;
+}
+
+/* 빠른이동 */
+.quickMenu{
+    position: fixed;
+    bottom: 70px;
+    right: 150px;
+}
+.quickMenu a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+
+/* section{
+    overflow: hidden;
+    width: 0;
+    height: 0;
+} */
