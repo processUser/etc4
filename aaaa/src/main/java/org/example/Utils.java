@@ -21,7 +21,7 @@ public class Utils {
             e.printStackTrace();
         }
     }
-    public static void getJson() throws IOException, ParseException {
+    public static String getJson() throws IOException, ParseException {
         URL url = new URL("https://www.cjcookit.com/pc/menu/menuProdList.json");
 
         InputStreamReader isr = new InputStreamReader(url.openConnection().getInputStream(), "UTF-8");
@@ -31,6 +31,7 @@ public class Utils {
 //        JSONObject head = (String) object.get("html");
 
         System.out.println((String) object.get("html"));
+        return (String) object.get("html");
     }
 //        String reqStr = null;
 //        StringBuilder stringBuilder = new StringBuilder();

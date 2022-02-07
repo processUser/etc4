@@ -34,6 +34,13 @@
       <version>1.14.3</version>
     </dependency>
 
+    <!-- jdbc  -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.27</version>
+    </dependency>
+
 <!--    &lt;!&ndash; https://mvnrepository.com/artifact/com.google.code.gson/gson &ndash;&gt;-->
 <!--    <dependency>-->
 <!--      <groupId>com.google.code.gson</groupId>-->

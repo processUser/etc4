@@ -22,10 +22,11 @@ public class GoodsDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = "SELECT A.goodspk, A.gnum, A.categorypk, A.gnm, A.price, A.quantity, A.rdt, " +
-                "B.categorynm AS category , AVG(revscore) AS avgscore, COUNT(revscore) AS countscore " +
+                "B.categorynm AS category, D.img AS img , AVG(revscore) AS avgscore, COUNT(revscore) AS countscore " +
                 "FROM cookit_goods A " +
                 "LEFT JOIN cookit_goods_category B ON A.categorypk = B.categorypk " +
-                "LEFT JOIN cookit_review C ON A.goodspk = C.goodspk ";
+                "LEFT JOIN cookit_review C ON A.goodspk = C.goodspk " +
+                "LEFT JOIN cookit_goods_image D ON A.goodspk = D.goodspk ";
 
         if(entity.getCategorypk() != 0){
             sql += "WHERE A.categorypk = ? ";
@@ -54,6 +55,7 @@ public class GoodsDAO {
                 rvo.setAvgscore(rs.getDouble("avgscore"));
                 rvo.setCountscore(rs.getInt("countscore"));
                 vo.setReviewvo(rvo);
+                vo.setImg(rs.getString("img"));
                 list.add(vo);
             }
             return list;

@@ -31,12 +31,13 @@ window.onload = () =>{
             const pElem1 = document.createElement('p');
             const pElem2 = document.createElement('p');
             
-            imgElem.src = 'http://placehold.it/268x320'
+            //imgElem.src = 'http://placehold.it/268x320'
+            imgElem.src = "/res/img/product/"+items.img+".jpg"
             imgElem.alt = "사진"
 
             pElem1.innerText = items.gnm;
             pElem1.dataset.gnum = items.gnum;
-            pElem2.innerText = items.price;
+            pElem2.innerText = items.price.toLocaleString();
 
             spanElem1.innerText = items.reviewvo.avgscore;
             spanElem2.innerText = '리뷰 ' + items.reviewvo.countscore;

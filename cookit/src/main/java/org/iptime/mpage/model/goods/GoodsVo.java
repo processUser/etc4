@@ -9,4 +9,5 @@ import lombok.Setter;
 public class GoodsVo extends GoodsEntity {
     private String category; //카테고리 이름
     private ReviewVo reviewvo;
+    private String img;
 }
