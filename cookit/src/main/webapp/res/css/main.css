@@ -1,8 +1,4 @@
-.w1200{
-    width: 1180px;
-    margin: 0 auto;
-    border: 1px solid blue;
-}
+@charset "UTF-8";
 .white{
     color: #fff;
 }

@@ -1,29 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COOKIT</title>
+    <title>장바구니</title>
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto&display=swap" rel="stylesheet">
-    
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    
-    <script src="/res/js/login.js"></script>
-
     <!-- style -->
     <link rel="stylesheet" href="/res/css/common.css">
     <link rel="stylesheet" href="/res/css/header.css">
+    <link rel="stylesheet" href="/res/css/cart.css">
     <link rel="stylesheet" href="/res/css/footer.css">
-    <link rel="stylesheet" href="/res/css/login.css">
 </head>
 <body>
-    <!-- <a href="https://www.cjcookit.com/pc/main">https://www.cjcookit.com/pc/main</a> -->
     <!-- 헤더 -->
     <header class="header">
         <!-- 회원 -->
@@ -58,29 +48,57 @@
         </div>
     </header>
 
-    <!-- 내용 -->
-    <section id="sectionLogin">
-        <h2>로그인</h2>
-        <form id="formWarp">
-            <div class="loginfrm1">
-                <input type="text" name="email" placeholder="email">
-                <input type="password" name="upw" placeholder="비밀번호">
-            </div>
-            <div class="loginfrm2">
-                <label for="uid"><input type="checkbox" id="uid">아이디 저장</label>
-                <span>
-                    <a href="">아이디 / 비밀번호 찾기</a>
-                    <a href="./agreeJoin.html">회원가입</a>
-                </span>
-            </div>
-            <div class="loginfrm3">
-                <input type="button" id="submit" value="로그인">
-            </div>
-        </form>
-        <!-- <div>소셜 로그인 추가 예정</div> -->
-        <div id="naver_id_login" class="snslogin1"></div>
+    <section class="section w1200">
+        <div class="cart_tit">
+            <h1>장바구니</h1>
+        </div>
+        <div class="cart_content">
+            <article class="article cart_content1 border_blue">
+                <div class="cart_check border_blue">
+                    <div><label for="chec"><input type="checkbox" name="chec" id="chec">전체선택</label></div>
+                    <div class="line">선택삭제</div>
+                </div>
+                <div class="cart_list border_blue">
+                    <ul>
+                        <li>
+                            <div><input type="checkbox"></div>
+                            <div class="cart_list_img">
+                                <img src="http://placehold.it/132x132" alt="상품이미지">
+                            </div>
+                            <div class="cart_list_gnm">상품명</div>
+                            <div class="cart_list_quantity">
+                                <span>-</span><span class="cart_list_quant">01</span><span>+</span>
+                            </div>
+                            <div class="cart_list_pri">19,900</div>
+                            <div class="cart_list_deli">삭제</div>
+                        </li>
+                        <li>
+                            <div><input type="checkbox"></div>
+                            <div class="cart_list_img">
+                                <img src="http://placehold.it/132x132" alt="상품이미지">
+                            </div>
+                            <div class="cart_list_gnm">상품명</div>
+                            <div class="cart_list_quantity">
+                                <span>-</span><span class="cart_list_quant">01</span><span>+</span>
+                            </div>
+                            <div class="cart_list_pri">19,900</div>
+                            <div class="cart_list_deli">삭제</div>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+            <article class="article cart_content2 border_blue">
+                <div class="price_infor border_blue">
+                    <div class="product_amount">상품금액 <span>19,900</span></div>
+                    <div class="delivery_fee">배송비 <span>3,100</span></div>
+                    <div class="expected_payment_amount">결제예정금액 <span>23,000</span></div>
+                    <div>주문하기</div>
+                </div>
+            </article>
+        </div>
+
     </section>
-    
+
     <!-- 푸터 -->
     <footer class="footer space-between">
         <!-- 푸터 로고 -->
@@ -153,16 +171,5 @@
         </div>
     </footer>
 
-    
-    <!-- 네이버 로그인 버튼 script -->
-    <script type="text/javascript">
-        var naver_id_login = new naver_id_login("k8cnRfEmk36R8WL53bbW", "http://127.0.0.1:5500/callback.html");
-        var state = naver_id_login.getUniqState();
-        naver_id_login.setButton("green", 3, 45);
-        naver_id_login.setDomain(".127.0.0.1:5500");
-        naver_id_login.setState(state);
-        naver_id_login.setPopup();
-        naver_id_login.init_naver_id_login();
-    </script>
 </body>
 </html>

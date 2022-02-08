@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* 초기화 */
 *{
     margin: 0;
@@ -62,8 +63,14 @@ html, body{
     text-transform: uppercase;
     font-weight: 800;
 }
-
-
+.w1200{
+    width: 1180px;
+    margin: 0 auto;
+    border: 1px solid blue;
+}
+.border_blue{
+    border: 1px solid blue;
+}
 /* section{
     overflow: hidden;
     width: 0;

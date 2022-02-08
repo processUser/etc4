@@ -10,6 +10,7 @@
     <!-- style -->
     <link rel="stylesheet" href="/res/css/common.css">
     <link rel="stylesheet" href="/res/css/header.css">
+    <link rel="stylesheet" href="/res/css/myinfo.css">
     <link rel="stylesheet" href="/res/css/footer.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
             <ul>
                 <li><a href="/agreeJoin">회원가입</a></li>
                 <li><a href="/login" class="line">로그인</a></li>
-                <li><a href="" class="line">고객행복센터</a></li>
+                <li><a href="/cs" class="line">고객행복센터</a></li>
             </ul>
         </nav>
         <div class="space-between">
@@ -36,19 +37,35 @@
                 <ul>
                     <li><a href="/menu">cookit메뉴</a></li>
                     <li><a href="/review">리뷰</a></li>
-                    <li><a href="">my쿡킷</a></li>
+                    <li><a href="/my">my쿡킷</a></li>
                 </ul>
             </nav>
             <!-- 장바구니 -->
             <ul class="my_menu">
-                <li class="bag"><a href="">장바구니</a></li>
+                <li class="bag"><a href="/cart">장바구니</a></li>
                 <li class="found"><a href="">메뉴찾기</a></li>
             </ul>
         </div>
     </header>
 
-    <section>
+    <section class="section w1200">
         <!-- TODO  -->
+        <article class="myinfo_category_list border_blue">
+            <ul>
+                <li>관심상품</li>
+                <li>회원정보</li>
+                <li>비밀번호변경</li>
+                <li>결제내역</li>
+                <li>회원탈퇴</li>
+            </ul>
+        </article>
+        <article class="border_blue">
+            <div class="myinfo_view_warp">
+
+
+
+            </div>
+        </article>
     </section>
 
     <!-- 푸터 -->
@@ -72,5 +89,6 @@
             <a href="">고객행복센터</a>
         </div>
     </footer>
+    <script src="/res/js/myinfo.js"></script>
 </body>
 </html>

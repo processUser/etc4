@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+.section{
+    min-height: 100%;
+    margin-bottom: 60px;
+}
+
+.cart_tit{}
+.cart_tit h1{
+    margin: 55px 0;
+    text-align: center;
+    font-size: 65px;
+    color: #BDD61A;
+}
+
+.cart_content{
+    display: flex;
+}
+.article{
+    padding: 0 30px;
+}
+
+.cart_content1{
+    flex: 7;
+}
+.cart_check{
+    height: 35px;
+}
+.cart_check div{
+    float: left;
+}
+.line::before{
+    background-color: black;
+}
+
+.cart_list{
+    clear: both;
+    margin-top: 25px;
+}
+.cart_list > ul {
+}
+.cart_list > ul >li{
+    display: grid;
+    grid-template-columns: 40px 1fr 4fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding-bottom: 10px;
+
+}
+.cart_list > ul >li:not(:first-child){
+    margin-top: 15px;
+}
+.cart_list > ul >li:not(:last-child){
+    border-bottom: 1px dotted #000;
+}
+.cart_list_img, .cart_list_gnm, .cart_list_quantity, .cart_list_pri{
+    margin-right: 15px;
+    font-size: 20px;
+}
+.cart_list_quant{
+    margin: 0 10px;
+}
+
+
+.cart_content2{
+    flex: 3;
+}
+.price_infor{
+    margin-top: 65px;
+}
+.price_infor div:not(:last-child) {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.price_infor div:not(:last-child) span{
+    float: right;
+}
