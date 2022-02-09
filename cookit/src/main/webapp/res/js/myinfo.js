@@ -10,6 +10,7 @@
         '/my/payhistory',
         '/my/delete'
     ]
+
     /*
     const urllist =[
         {like: '/my/like'},
@@ -25,17 +26,21 @@
             .then(res => res.text())
             .then(data =>{
                 view_warp.innerHTML = data;
+            }).catch(err =>{
+                //console.log(err)
             })
     }
     like();
 
    for(let i = 0; i < myinfo_category_list.length; i++){
        myinfo_category_list[i].addEventListener('click', () => {
-           fetch(urllist[i])
+           fetch( 'http://localhost:8090'+urllist[i])
                .then(res => res.text())
                .then(data =>{
                    console.log(urllist[i])
                    view_warp.innerHTML = data;
+               }).catch(err =>{
+                  console.log(err)
                })
        })
    }
