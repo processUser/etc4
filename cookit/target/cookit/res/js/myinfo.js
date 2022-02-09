@@ -21,6 +21,7 @@
     ]
     */
 
+    // 처음 페이지 열릴때 기본 화면
     const like = () => {
         fetch('/my/like')
             .then(res => res.text())
@@ -30,9 +31,10 @@
                 //console.log(err)
             })
     }
-    like();
+    setTimeout(like(),1000);
 
-   for(let i = 0; i < myinfo_category_list.length; i++){
+    // 리스트별 이벤트 걸기
+    for(let i = 0; i < myinfo_category_list.length; i++){
        myinfo_category_list[i].addEventListener('click', () => {
            fetch( 'http://localhost:8090'+urllist[i])
                .then(res => res.text())
@@ -43,6 +45,6 @@
                   console.log(err)
                })
        })
-   }
+    }
 
 }

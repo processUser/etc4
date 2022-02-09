@@ -18,7 +18,7 @@ public class Test {
             e.printStackTrace();
         }
     }
-    public static void getdata() throws IOException { // 크롤링
+    public static void getdata() throws IOException { // 크롤링 해서 DB저장 함
         final String URL = "http://localhost:8090/aaaa";
         Connection conn = Jsoup.connect(URL);
         Document document = conn.get();
@@ -29,10 +29,10 @@ public class Test {
         Elements review_num = document.getElementsByClass("review_num");
         Elements img_src = document.getElementsByTag("img");
 
-//        for (int i = 0; i < title.size(); i++){
-//            System.out.println(img_src.get(i).attr("src"));
-//            HttpDownloader.downloadToDir(img_src.get(i).attr("src").toString(), "E:\\test\\cookit\\src\\main\\webapp\\res\\img\\product\\", img_src.get(i).attr("src").toString());
-//        }
+        for (int i = 0; i < title.size(); i++){
+            System.out.println(img_src.get(i).attr("src"));
+            HttpDownloader.downloadToDir(img_src.get(i).attr("src").toString(), "C:\\Users\\HOME\\Desktop\\etc4\\cookit\\src\\main\\webapp\\res\\img\\product\\", img_src.get(i).attr("src").toString());
+        }
 
         for (int i = 0; i < title.size(); i++){
             Goods goods = new Goods();
@@ -44,8 +44,9 @@ public class Test {
 
             InsGoods.insgoods(goods);
 
-            //goods.setGoodspk(i+1);
-            //InsGoods.insimg(goods);
+            goods.setGoodspk(i+1);
+            InsGoods.insimg(goods);
+
 //            System.out.println(title.get(i).html());
 //            System.out.println(price.get(i).html().substring(0,5));
 //            System.out.println(review_num.get(i).html().substring(3));

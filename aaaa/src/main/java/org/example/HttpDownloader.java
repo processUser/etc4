@@ -9,15 +9,16 @@ import java.net.URL;
 import java.net.URLDecoder;
 
 public class HttpDownloader { // URL 로 이미지 가저와서 폴더가 없으면 생성후 저장.
-//    public static void main(String[] args) {
-//        String url="//img.cjcookit.com/images/file/product/474/20200325091427622.jpg?RS=268x320";
+    public static void main(String[] args) {
+        String url="//img.cjcookit.com/images/file/product/474/20200325091427622.jpg?RS=268x320";
 //        String dir="E:\\test\\cookit\\src\\main\\webapp\\res\\img\\product\\";
-//        try {
-//            HttpDownloader.downloadToDir(url, dir, url);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+        String dir="C:\\Users\\HOME\\Desktop\\etc4\\cookit\\src\\main\\webapp\\res\\img\\product\\";
+        try {
+            HttpDownloader.downloadToDir(url, dir, url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     /** 정해진 디렉토리로 url의 내용을 저장한다. (저장되는 파일명이 url에 따라서 달라짐) **/
