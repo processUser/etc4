@@ -14,4 +14,6 @@ window.onload = () => {
         console.log(((section3[i].children.item(0)).offsetWidth))
         section3[i].style.width = (section3[i].children.length * (section3[i].children.item(0)).offsetWidth)+'px'
     }
+
+
 }

@@ -76,3 +76,32 @@ html, body{
     width: 0;
     height: 0;
 } */
+
+.leftslidein{
+    animation-duration: 5s;
+    animation-name: leftslidein;
+    animation-delay: 7S;
+    /*animation-iteration-count: infinite;*/
+}
+@keyframes leftslidein{
+    from{
+        margin-left: 0%;
+
+    }
+    to{
+        margin-left: -100%;
+    }
+}
+.rightslidein{
+    animation-duration: 4s;
+    animation-name: rightslidein;
+    /* animation-iteration-count: infinite; */
+}
+@keyframes rightslidein{
+    from{
+        margin-left: 0px;
+    }
+    to{
+        margin-left: 100%;
+    }
+}

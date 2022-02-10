@@ -14,4 +14,38 @@ window.onload = () => {
         console.log(((section3[i].children.item(0)).offsetWidth))
         section3[i].style.width = (section3[i].children.length * (section3[i].children.item(0)).offsetWidth)+'px'
     }
+
+    //left 슬라이드
+    const leftslide = () =>{
+        let ulElem = document.querySelector('.slide')
+        let firstliElem = ul.children[0];
+
+        ulElem.addEventListener('animationend', () => {
+            ulElem.append(firstliElem);
+            ulElem.classList.remove('leftslidein');
+            ulElem.offsetWidth;
+            ulElem.classList.add('leftslidein');
+        });
+    }
+
+    setInterval(leftslide, 6500);
+
+    // let leftbtn = document.querySelector('.left > a');
+    // console.log(leftbtn)
+    // let val = true;
+    //
+    // leftbtn.addEventListener('click', (e)=>{
+    //     e.preventDefault();
+    //     if(val){
+    //         clearInterval(leftslides);
+    //         sli();
+    //         setTimeout(leftslides = setInterval(sli, 6500),6500)
+    //         val = !val;
+    //     } else{
+    //         clearInterval(leftslides);
+    //         sli();console.log("클릭거절")
+    //         setTimeout(leftslides = setInterval(sli, 6500),6500)
+    //         val = !val;
+    //     }
+    // });
 }
