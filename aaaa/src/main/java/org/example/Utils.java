@@ -21,7 +21,7 @@ public class Utils {
             e.printStackTrace();
         }
     }
-    public static String getJson() throws IOException, ParseException {
+    public static String getJson() throws IOException, ParseException { // json 에서 필요한 부분을 html태그를 뿌림
         URL url = new URL("https://www.cjcookit.com/pc/menu/menuProdList.json");
 
         InputStreamReader isr = new InputStreamReader(url.openConnection().getInputStream(), "UTF-8");
