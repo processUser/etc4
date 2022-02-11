@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+/* 초기화 */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+li{
+    list-style: none;
+}
+        /* 슬라이더 */
+.slideWrap{
+    /* overflow: hidden; */
+    position: relative;
+    width: 100%;
+    height: 640px;
+}
+
+/* slide */
+.slide{
+    display: flex;
+    width: 800%;
+    /* margin-left: -11418px; */
+    
+}
+.slidein{
+    animation-duration: 3s;
+    animation-name: slidein;
+    /* animation-iteration-count: infinite; */
+    /* animation-delay: 7S; */
+}
+@keyframes slidein{
+    from{
+        margin-left: 0px;
+    }
+    to{
+        margin-left: 100%;
+    }
+}
+@keyframes slidein{
+    from{
+        margin-left: 0%;
+    
+    }
+    to{
+        margin-left: -100%;
+    }
+}
+.slide li{
+    width: 100%;
+    height: 640px;
+    background-repeat: no-repeat;
+
+
+}
+.slide li > div{
+    width: 100%;
+}
+.slide li > div div.w1200{
+    position: relative;
+
+}
+.slide li div div.w1200 > a{
+    top: 55px;
+    display: block;
+    width: 500px;
+    padding: 15px 0;
+}
+
+
+.slide li div div.w1200 a p.slideF{
+    width: 150px;
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 22px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 40px;
+}
+.slide li div div.w1200 a p.slideS{
+    margin-top: 25px;
+    width: 500px;
+    font-size: 55px;
+    text-transform: uppercase;
+}
+.slide li div div.w1200 a p.slideS span{
+    font-size: 45px;
+}
+.slide li div div.w1200 a p.slideT{
+    margin-top: 20px;
+    width: 450px;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+.slide li div div.w1200 a div.slideI{
+    margin-top: 25px;
+}
+.slide li div div.w1200 a div.slideI P{
+    float: left;
+    font-size: 22px;
+}
+.slideI p:first-child::before{
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    /* border: 1px solid; */
+    background: url(/res/img/common/img_main.png) no-repeat ;
+    background-position: -565px -30px;
+    background-size: 820px 800px;
+}
+.slideI p:last-child::before{
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-left: 30px;
+    background: url(/res/img/common/img_main.png) no-repeat ;
+    background-position: -595px -30px;
+    background-size: 820px 800px;
+}
+.slide li div div.w1200 div.slideP{
+    top: 380px;
+    font-size: 45px;
+}
+.slide li div div.w1200 div.slideP p{
+    display: inline-block;
+}
+.slide li div div.w1200 div.slideP a{}
+.slide li div div.w1200 div.slideP a::before{
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    background: url(/res/img/common/img_main.png) no-repeat ;
+    background-position: -610px -73px;
+    background-size: 800px 800px;
+}
+
+
+/* 좌우버튼 */
+.btnLR{
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50px);
+}
+.btnLR ul{
+    position: relative;
+}
+.btnLR ul .left{
+    left: -60px;
+}
+.btnLR ul .left a{}
+.btnLR ul .left a::before{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 75px;
+    background: url(/res/img/common/img_main.png) no-repeat ;
+    background-position: 0px -460px;
+    background-size: 820px 800px;
+
+}
+.btnLR ul .right{
+    right: -60px;
+}
+.btnLR ul .right a{}
+.btnLR ul .right a::before{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 75px;
+    background: url(/res/img/common/img_main.png) no-repeat ;
+    background-position: -70px -460px;
+    background-size: 820px 800px;
+
+}
+
+/* 슬라이더 정지버튼 */
+.btnStop{
+    bottom: 60px;
+    width: 100%;
+}
+.btnStop > div > div{
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.btnStop div div .slideNum{
+    color: #fff;
+    font-size: 18px;
+    margin-right: 10px;
+
+}
+.btnStop div div a::before{
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(/res/img/common/img_main.png) no-repeat ;
+    background-position: -445px -395px;
+    background-size: 860px 840px;
+    color: rgb(196, 255, 221);
+}
+    </style>
+</head>
+<body>
+    <section class="slideWrap">
+        <ul class="slide ">
+            <li>
+                <div>
+                    <div class="w1200">
+                        <a href="" class="po_absolute black">
+                            <p class="slideF white backBlack">이벤트 오픈</p>
+                            <p class="slideS">cookit<br>thanksfestival</p>
+                            <p class="slideT">2021년 마지막 혜택!</p>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="w1200">
+                        <a href="" class="po_absolute black">
+                            <p class="slideF white backBlack">신메뉴 오픈</p>
+                            <p class="slideS">분위기를 한껏 살리는<br>와인페어링요리</p>
+                            <p class="slideT">특별한 요리로 완성되는 나만의 와인바</p>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="w1200">
+                        <a href="" class="po_absolute black">
+                            <p class="slideF white backBlack">웹매거진 오픈</p>
+                            <p class="slideS">우리집 식탁이<br>빛나는 순간</p>
+                            <p class="slideT">쿡킷이 발행하는 웹 매거진 vol.11</p>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="w1200">
+                        <a href="" class="po_absolute white">
+                            <p class="slideF black backWhite">기획전 오픈</p>
+                            <p class="slideS">추운겨울 떠나는,<br>로맨틱한 캠핑메뉴</p>
+                            <p class="slideT">캠핑의 감성은 따듯하고 맛있는 쿡킷으로 완성!</p>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="w1200">
+                        <a href="" class="po_absolute black" >
+                            <p class="slideF white backBlack">이벤트 오픈</p>
+                            <p class="slideS">요린이도 걱정no<br>난이도 '下'메뉴!</p>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="w1200">
+                        <a href="" class="po_absolute white">
+                            <p class="slideF black backWhite">기획전 오픈</p>
+                            <p class="slideS">아이들이 좋아하는<br>패밀리 쿡스토랑</p>
+                            <p class="slideT">방학이 시작된 요즘, 아이들과 함께 준비해 보세요!</p>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="w1200">
+                        <a href="" class="po_absolute white">
+                            <p class="slideF black backWhite">베스트 메뉴</p>
+                            <p class="slideS"><span>근사한 전골요리</span><br>평양식 어복쟁반</p>
+                            <div class="slideI">
+                                <p>3인분</p>
+                                <p>조리 30분</p>
+                            </div>
+                        </a>
+                        <div class="po_absolute white slideP">
+                            <p><span>34,800</span>원</p>
+                            <a href="#"><span class="hide">장바구니</span></a>
+                        </div>
+                    </div>
+                </div>
+                <a href="">재생/정지버튼</a>
+            </li>
+            <li>
+                <div>
+                    <div class="w1200">
+                        <a href="" class="po_absolute white">
+                            <p class="slideF black backWhite">베스트 메뉴</p>
+                            <p class="slideS"><span>오리지널의 맛</span><br>부채살 찹스테이크</p>
+                            <div class="slideI">
+                                <p>2인분</p>
+                                <p>조리 10분</p>
+                            </div>
+                        </a>
+                        <div class="po_absolute white slideP">
+                            <p><span>20,800</span>원</p>
+                            <a href="#"><span class="hide">장바구니</span></a>
+                        </div>                            
+                    </div>
+                </div>
+                <a href="">재생/정지버튼</a>
+            </li>
+        </ul>
+        <div class="btnLR po_absolute">
+            <!-- 좌우버튼 -->
+            <ul class="">
+                <li class="left po_absolute" style="background-color: blue;"><a href=""></a></li>
+                <li class="right po_absolute"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="btnStop po_absolute">
+            <!-- 슬라이더 정지 -->
+            <div class="w1200">
+                <div>
+                    <span class="slideNum"><span>1</span>&#47;<span>8</span></span>
+                    <a href=""><span class="hide">정지</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let ul = document.querySelector('.slideWrap').childNodes.item(1)
+        let li = ul.children
+        console.log(li)
+        let bgcolor =['bisque', 'rgb(239, 255, 196)', 'rgb(196, 255, 221)']
+        for(let i = 0; i < li.length; i++){
+            // console.log(li[i].childNodes[1])
+            li[i].style.backgroundColor = 'rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')'
+        }
+
+        const sli = () =>{
+            let ul1 = document.querySelector('.slide')
+            let li = ul1.children[0];
+            ul1.addEventListener('animationend', () => {
+                ul1.append(li)
+                ul1.classList.remove('slidein')
+                ul1.offsetWidth
+            });
+            ul1.classList.add('slidein');
+            
+        }
+        let leftsl = setInterval(sli, 4000)
+
+        let leftbtn = document.querySelector('.left > a');
+        console.log(leftbtn)
+        let val = true;
+        //버튼을 클릭하면
+        leftbtn.addEventListener('click', function clickleftbtn(e) {
+            let ulElem = document.querySelector('.slide')
+            let liElem = ulElem.children[0]
+            console.log(liElem)
+            e.preventDefault();
+            
+            // if(val){
+                clearInterval(leftsl);
+                sli();
+                // ulElem.addEventListener('animationend', () => {
+                    leftsl = setInterval(sli, 6000)
+                // });
+                console.log(val)
+                // val = !val;
+                // leftbtn.removeEventListener('click', clickleftbtn)
+            
+            // } else{
+                console.log(val)
+                // val = !val;
+                // return;
+                
+            // }
+        });
+        let rightbtn = document.querySelector('.right');
+
+    </script>
+</body>
+</html>
