@@ -78,14 +78,14 @@ html, body{
 } */
 
 .leftslidein{
-    animation-duration: 5s;
+    animation-duration: 4s;
     animation-name: leftslidein;
-    animation-delay: 7S;
+    /*animation-delay: 7S;*/
     /*animation-iteration-count: infinite;*/
 }
 @keyframes leftslidein{
     from{
-        margin-left: 0%;
+        margin-left: 0px;
 
     }
     to{
@@ -93,15 +93,22 @@ html, body{
     }
 }
 .rightslidein{
-    animation-duration: 4s;
+    animation-duration: 2.5s;
     animation-name: rightslidein;
     /* animation-iteration-count: infinite; */
 }
 @keyframes rightslidein{
     from{
-        margin-left: 0px;
+        margin-left: -100%;
     }
     to{
-        margin-left: 100%;
+        margin-left: 0px;
     }
+}
+
+.lefttransform{
+    transition: 3s;
+}
+.righttransform{
+    transition: 3s;
 }

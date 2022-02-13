@@ -11,6 +11,9 @@
 .backBlack{
     background-color: #000;
 }
+.over_hidden{
+    overflow: hidden;
+}
 .zIndex{
     z-index: 1;
 }
@@ -388,7 +391,7 @@
 .aside > div ul li:nth-of-type(2) div a::before{
     background-position: -537px -325px;
 }
-.aside > div ul li:nth-of-type(2) div.choose a::before{
+.aside > div ul li:nth-of-type(2) div.adchoose a::before{
     background-position: -561px -325px;
 }
 .aside > div ul li:last-child{}

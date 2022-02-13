@@ -57,7 +57,7 @@
     <section>
         <!-- 슬라이더 -->
         <section class="slideWrap">
-            <ul class="slide leftslidein">
+            <ul class="slide">
                 <li>
                     <div>
                         <div class="w1200">
@@ -140,7 +140,6 @@
                             </div>
                         </div>
                     </div>
-                    <a href="">재생/정지버튼</a>
                 </li>
                 <li>
                     <div>
@@ -159,17 +158,16 @@
                             </div>                            
                         </div>
                     </div>
-                    <a href="">재생/정지버튼</a>
                 </li>
             </ul>
 
-<!--            <div class="btnLR po_absolute">-->
-<!--                &lt;!&ndash; 좌우버튼 &ndash;&gt;-->
-<!--                <ul class="w1200">-->
-<!--                    <li class="left po_absolute"><a href=""><span class="hide">좌</span></a></li>-->
-<!--                    <li class="right po_absolute"><a href=""></a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
+            <div class="btnLR po_absolute">
+                <!-- 좌우버튼 -->
+                <ul class="w1200">
+                    <li class="left po_absolute"><a><span class="hide">좌</span></a></li>
+                    <li class="right po_absolute"><a href=""></a></li>
+                </ul>
+            </div>
 <!--            <div class="btnStop po_absolute">-->
 <!--                &lt;!&ndash; 슬라이더 정지 &ndash;&gt;-->
 <!--                <div class="w1200">-->
@@ -185,12 +183,14 @@
         <section class="w1200 section2">
             <!-- 배송 정보 -->
             <article>
+                <!--TODO JS 로 배송지 검색 넣기-->
                 <p>우리집도 cookit 배송이 되나요?</p>
                 <p>배송이 가능한지 알려드려요.</p>
                 <p>배송지 검색</p>
             </article>
             <!-- 남은시간 -->
             <article>
+                <!--TODO JS 로 시간 계산 넣기-->
                 <p>12월 14일(화)에 받을 수 있어요</p>
                 <p>오전 7시까지 주문하면 다음날 배송됩니다.</p>
                 <p>남은시간 <span>00:00:00</span></p>
@@ -210,18 +210,16 @@
                     <li>시원한맛</li>
                 </ul>
                 <div>
-                    <h2>메뉴<br>추천드려요</h2>
-                    <p><a href="">로그인</a>하시면 고객님의 구매내역과<br>맛취향에 따라 딱맞는 맛있는 메뉴를 추천드려요</p>
+                    <h2>메뉴를<br>확인해보세요</h2>
                     <ul>
-                        <li><a href=""><span class="hide">좌</span></a></li>
-                        <li><span>1</span>&#47;<span>5</span></li>
-                        <li><a href=""><span class="hide">우</span></a></li>
+                        <li><a href="" class="bestleft"><span class="hide">좌</span></a></li>
+                        <li><a href="" class="bestright"><span class="hide">우</span></a></li>
                     </ul>
                 </div>
             </div>
             <!-- 매콤한맛 -->
-            <article  class="hide">
-                <ul>
+            <article  style="overflow: hidden">
+                <ul class="menuSlideList">
                     <li>
                         <a href="">
                             <img src="/res/img/main/product/520/20210901132409761.png" alt="눈꽃치즈닭갈비">
@@ -286,256 +284,256 @@
                 </ul>
             </article>
             <!-- 짭짤한맛 -->
-            <article class="hide">
-                <ul>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20210202111906736.png" alt="부채살 찹스테이크">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 부채살 찹스테이크</p>
-                            <p>
-                                <span>20,800원</span>&#47;<span>2인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20210825085507178.png" alt="버섯소불고기">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 버섯소불고기</p>
-                            <p>
-                                <span>25,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20210120092826185.png" alt="소고기버섯듬뿍잡채">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 소고기버섯듬뿍잡채</p>
-                            <p>
-                                <span>28,800원</span>&#47;<span>4인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>    
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20211202092629978.png" alt="토마토해산물스튜">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 토마토해산물스튜</p>
-                            <p>
-                                <span>36,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+<!--            <article class="hide">-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20210202111906736.png" alt="부채살 찹스테이크">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 부채살 찹스테이크</p>-->
+<!--                            <p>-->
+<!--                                <span>20,800원</span>&#47;<span>2인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20210825085507178.png" alt="버섯소불고기">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 버섯소불고기</p>-->
+<!--                            <p>-->
+<!--                                <span>25,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20210120092826185.png" alt="소고기버섯듬뿍잡채">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 소고기버섯듬뿍잡채</p>-->
+<!--                            <p>-->
+<!--                                <span>28,800원</span>&#47;<span>4인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>    -->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20211202092629978.png" alt="토마토해산물스튜">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 토마토해산물스튜</p>-->
+<!--                            <p>-->
+<!--                                <span>36,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </article>-->
             <!-- 새콤한맛 -->
-            <article class="hide">
-                <ul>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20210923143117315.png" alt="토마토비프스튜">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 토마토비프스튜</p>
-                            <p>
-                                <span>24,800원</span>&#47;<span>2인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20211206142339970.png" alt="라코타치즈 콜드파스타">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 라코타치즈 콜드파스타</p>
-                            <p>
-                                <span>28,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+<!--            <article class="hide">-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20210923143117315.png" alt="토마토비프스튜">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 토마토비프스튜</p>-->
+<!--                            <p>-->
+<!--                                <span>24,800원</span>&#47;<span>2인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20211206142339970.png" alt="라코타치즈 콜드파스타">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 라코타치즈 콜드파스타</p>-->
+<!--                            <p>-->
+<!--                                <span>28,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </article>-->
             <!-- 담백한맛 -->
-            <article class="hide">
-                <ul>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20200618141509433.png" alt="닭한마리와 칼국수">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 닭한마리와 칼국수</p>
-                            <p>
-                                <span>23,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>    
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20200416114835278.png" alt="평양식 어복쟁반">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 평양식 어복쟁반</p>
-                            <p>
-                                <span>34,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20211118165400917.png" alt="수삼양지수육전골">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 수삼양지수육전골</p>
-                            <p>
-                                <span>36,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20211202090437947.png" alt="굴감바스 알아히요">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 굴감바스 알아히요</p>
-                            <p>
-                                <span>26,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>    
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20210727181551921.png" alt="쉬림프&베이컨 또띠아피자">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 쉬림프&베이컨 또띠아피자</p>
-                            <p>
-                                <span>24,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+<!--            <article class="hide">-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20200618141509433.png" alt="닭한마리와 칼국수">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 닭한마리와 칼국수</p>-->
+<!--                            <p>-->
+<!--                                <span>23,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>    -->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20200416114835278.png" alt="평양식 어복쟁반">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 평양식 어복쟁반</p>-->
+<!--                            <p>-->
+<!--                                <span>34,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20211118165400917.png" alt="수삼양지수육전골">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 수삼양지수육전골</p>-->
+<!--                            <p>-->
+<!--                                <span>36,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20211202090437947.png" alt="굴감바스 알아히요">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 굴감바스 알아히요</p>-->
+<!--                            <p>-->
+<!--                                <span>26,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>    -->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20210727181551921.png" alt="쉬림프&베이컨 또띠아피자">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 쉬림프&베이컨 또띠아피자</p>-->
+<!--                            <p>-->
+<!--                                <span>24,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </article>-->
             <!-- 이국적인맛 -->
-            <article>
-                <ul>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20210318090508232.png" alt="감바스알아히요">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 감바스알아히요</p>
-                            <p>
-                                <span>20,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20200128171747960.png" alt="쿵팟퐁커리">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 쿵팟퐁커리</p>
-                            <p>
-                                <span>23,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20211201101809859.png" alt="수비드치킨 브루스케타">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 수비드치킨 브루스케타</p>
-                            <p>
-                                <span>26,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20201202181334897.png" alt="수비드 닭가슴살스테이크와 크림 리조또">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 수비드 닭가슴살스테이크와 크림 리조또</p>
-                            <p>
-                                <span>26,800원</span>&#47;<span>2인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+<!--            <article>-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20210318090508232.png" alt="감바스알아히요">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 감바스알아히요</p>-->
+<!--                            <p>-->
+<!--                                <span>20,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20200128171747960.png" alt="쿵팟퐁커리">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 쿵팟퐁커리</p>-->
+<!--                            <p>-->
+<!--                                <span>23,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20211201101809859.png" alt="수비드치킨 브루스케타">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 수비드치킨 브루스케타</p>-->
+<!--                            <p>-->
+<!--                                <span>26,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20201202181334897.png" alt="수비드 닭가슴살스테이크와 크림 리조또">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 수비드 닭가슴살스테이크와 크림 리조또</p>-->
+<!--                            <p>-->
+<!--                                <span>26,800원</span>&#47;<span>2인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </article>-->
             <!-- 얼큰한맛 -->
-            <article class="hide">
-                <ul>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20211118163635929.png" alt="얼큰시원 알곤이전골">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 얼큰시원 알곤이전골</p>
-                            <p>
-                                <span>29,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+<!--            <article class="hide">-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20211118163635929.png" alt="얼큰시원 알곤이전골">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 얼큰시원 알곤이전골</p>-->
+<!--                            <p>-->
+<!--                                <span>29,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </article>-->
             <!-- 시원한맛 -->
-            <article class="hide">
-                <ul>
-                    <li>
-                        <a href="">
-                            <img src="/res/img/main/product/520/20211111084520036.png" alt="콩나물밥과 황태해장국">
-                        </a>
-                        <div>
-                            <p><a href=""></a> 콩나물밥과 황태해장국</p>
-                            <p>
-                                <span>23,800원</span>&#47;<span>3인분</span>
-                                <a href=""><span class="hide">장바구니</span></a>
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </article>
+<!--            <article class="hide">-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img src="/res/img/main/product/520/20211111084520036.png" alt="콩나물밥과 황태해장국">-->
+<!--                        </a>-->
+<!--                        <div>-->
+<!--                            <p><a href=""></a> 콩나물밥과 황태해장국</p>-->
+<!--                            <p>-->
+<!--                                <span>23,800원</span>&#47;<span>3인분</span>-->
+<!--                                <a href=""><span class="hide">장바구니</span></a>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </article>-->
         </section>
         <!-- 광고/이벤트 -->
-        <aside class="aside">
-            <ul>
-                <li><a href=""><img src="/res/img/main/ad/20211203164840711.jpg" alt=""></a></li>
-                <li><a href=""><img src="/res/img/main/ad/20211130170934313.jpg" alt=""></a></li>
-                <li><a href=""><img src="/res/img/main/ad/20210930114221992.jpg" alt=""></a></li>
+        <aside class="aside over_hidden">
+            <ul class="adslide">
+                <li data-adchoose="0"><a href=""><img src="/res/img/main/ad/20211203164840711.jpg" alt=""></a></li>
+                <li data-adchoose="1"><a href=""><img src="/res/img/main/ad/20211130170934313.jpg" alt=""></a></li>
+                <li data-adchoose="2"><a href=""><img src="/res/img/main/ad/20210930114221992.jpg" alt=""></a></li>
             </ul>
             <div>
                 <ul>
-                    <li><a href=""><span class="hide">좌</span></a></li>
-                    <li>
-                        <div class="choose"><a href="" ><span class="hide">1</span></a></div>
+                    <li class="adleft"><a href=""><span class="hide">좌</span></a></li>
+                    <li class="adchooseWarp">
+                        <div class="adchoose"><a href="" ><span class="hide">1</span></a></div>
                         <div><a href=""><span class="hide">2</span></a></div>
                         <div><a href=""><span class="hide">3</span></a></div>
                     </li>
-                    <li><a href=""><span class="hide">우</span></a></li>
+                    <li class="adright"><a href=""><span class="hide">우</span></a></li>
                 </ul>
             </div>
         </aside>

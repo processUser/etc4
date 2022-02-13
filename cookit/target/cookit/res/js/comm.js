@@ -74,4 +74,4 @@ function sendToken() {
     //console.log('document.cookie : ' + document.cookie) // ajax에서는 안됨.
 }
 
-setTimeout(sendToken(),5000);
+//setTimeout(sendToken(),5000);
