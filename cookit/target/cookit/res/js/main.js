@@ -41,7 +41,7 @@
     leftbtn.addEventListener('click', (e)=>{
         clearInterval(leftslides);
         lslide();
-        leftslides = setInterval(lslide, 9500);
+        leftslides = setInterval(lslide, 6500);
         e.preventDefault();
     });
 
@@ -65,6 +65,7 @@
     rightbtn.addEventListener('click', (e)=>{
         clearInterval(leftslides);
         rslide();
+        leftslides = setInterval(lslide, 6500);
         e.preventDefault();
     });
 
@@ -110,7 +111,7 @@
 
     const adslideElem = document.querySelector('.adslide');
     const adLeft = () =>{
-        adslideElem.style.transition = 3 + "s";
+        adslideElem.style.transition = 4 + "s";
         adslideElem.style.transform = "translate(-" + (adslideElem.firstElementChild.offsetWidth) + "px, 0px)";
         adslideElem.removeEventListener('transitionend', adright);
         adslideElem.addEventListener('transitionend', adleft)
@@ -137,27 +138,50 @@
         }
     }
 
-    let adsetInterval = setInterval(adLeft,3000)
+    let adsetInterval = setInterval(adLeft,7000)
 
     const adRight = () =>{
         let adslidelilastElem = adslideElem.lastElementChild;
-        e.preventDefault();
         adslideElem.prepend(adslidelilastElem);
         adslideElem.style.transition = 1+ "ms";
-        adslideElem.style.transform = "translate(-" + adslidelilastElem.offsetWidth + "px, 0px)";
-        adslideElem.removeEventListener('transitionend', adleft)
-        adslideElem.addEventListener('transitionend', adright)
+        adslideElem.style.transform = "translate(-" + (adslidelilastElem.offsetWidth) + "px, 0px)";
+        adslideElem.removeEventListener('transitionend', adleft);
+        adslideElem.addEventListener('transitionend', adright);
+        adchoose(Number(adslidelilastElem.dataset.adchoose));
     }
     const adright = function () {
-        menuSlideListElem.style.transition = 3 + "s";
-        menuSlideListElem.style.transform = "translate(0px, 0px)";
+        adslideElem.style.transition = 4 + "s";
+        adslideElem.style.transform = "translate(0px, 0px)";
     }
 
-    const adleftbtnElem = document.querySelector('.adleft');
+    const adleftbtnElem = document.querySelector('.adleft > a');
+    adleftbtnElem.addEventListener('click',(e)=>{
+        clearInterval(adsetInterval);
+        adLeft();
+        adsetInterval = setInterval(adLeft,7000)
+        e.preventDefault();
+    })
 
-    adleftbtnElem.addEventListener('click',()=>{})
+    const adrightbtnElem = document.querySelector('.adright > a');
+    adrightbtnElem.addEventListener('click',(e)=>{
+        clearInterval(adsetInterval);
+        adRight();
+        adsetInterval = setInterval(adLeft,7000)
+        e.preventDefault();
+    })
 
-    const adrightbtnElem = document.querySelector('.adright');
-    adleftbtnElem.addEventListener('click',()=>{})
+    // 공지사항 슬라이드
+    const noticeSlideElem = document.querySelector('.noticeSlide');
+    const noticeTop = () =>{
+        let noticeslideliElem = noticeSlideElem.firstElementChild;
+        noticeSlideElem.style.transition = 4 + "s";
+        noticeSlideElem.style.transform = "translate(0px, -"+ noticeslideliElem.offsetHeight +"px)";
+        noticeSlideElem.addEventListener('transitionend',  function () {
+            noticeSlideElem.style.transition = 0 + "ms";
+            noticeSlideElem.style.transform = "translate(0px, 0px)"
+            noticeSlideElem.appendChild(noticeslideliElem);
+        });
+    };
+    setInterval(noticeTop, 8000)
 
 }

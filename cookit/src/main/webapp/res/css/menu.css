@@ -39,3 +39,33 @@
 #listwarp article{
     margin-bottom: 25px;
 }
+
+.menutitle{
+    font-size: 20px;
+    margin-top: 10px;
+}
+.menuprice{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.nostar{
+    display: inline-block;
+    width: 135px;
+    height: 25px;
+    background: url(/res/img/common/ico_set.png) no-repeat ;
+    background-size: 800px 800px;
+    background-position: 0px -359px;
+
+}
+.star{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(/res/img/common/ico_set.png) no-repeat ;
+    background-size: 800px 800px;
+    background-position: 0px -383px;
+    height: 25px;
+}

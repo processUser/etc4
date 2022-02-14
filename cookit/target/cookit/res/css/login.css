@@ -1,5 +1,6 @@
 #sectionLogin{
-    height: 62.4%;
+    /*height: 62.4%;*/
+    margin: 35px 0;
     display: grid;
     justify-content: center;
     align-content: center;

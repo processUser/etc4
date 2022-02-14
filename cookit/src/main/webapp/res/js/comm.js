@@ -6,6 +6,42 @@ const reg = {  // 정규식
     nm: /[가-힣]{2,5}/gm,
     dd: /^[0-9]{2}$/gm
 }
+// 빠른 이동 버튼
+document.addEventListener('scroll', () =>{
+    // console.log(document.documentElement.scrollHeight);
+    console.log(document.documentElement.scrollTop);
+    console.log(document.documentElement.offsetWidth);
+    let width = document.documentElement.offsetWidth;
+    let scrollHight = document.documentElement.scrollTop;
+    const quickMenuElem = document.querySelector('.quickMenu');
+    let clientRect = quickMenuElem.getBoundingClientRect();
+    // console.log(clientRect.top);
+    if (width > 1300){
+        if (scrollHight > 400) {
+            quickMenuElem.classList.remove('quickMenuNone');
+            quickMenuElem.classList.add('quickMenuFixed');
+        }else {
+            quickMenuElem.classList.remove('quickMenuFixed');
+            quickMenuElem.classList.add('quickMenuNone');
+        }
+
+        if(scrollHight > 6890){
+            quickMenuElem.classList.add('quickMenuAbsolute');
+        } else {
+            quickMenuElem.classList.remove('quickMenuAbsolute');
+        }
+    }else {
+        quickMenuElem.classList.remove('quickMenuFixed');
+        quickMenuElem.classList.add('quickMenuNone');
+
+    }
+
+    if(width > 1600){
+        quickMenuElem.classList.add('quickMenu_1600');
+    } else {
+        quickMenuElem.classList.remove('quickMenu_1600');
+    }
+})
 
 // JWT access token 가져오기
 // response 헤더에 Authorization 이곳에 담겨있다.

@@ -27,19 +27,31 @@ window.onload = () =>{
             const imgElem = document.createElement('img');
             const divElem = document.createElement('div');
             const spanElem1 = document.createElement('span');
+            const starElem = document.createElement('span');
             const spanElem2 = document.createElement('span');
             const pElem1 = document.createElement('p');
             const pElem2 = document.createElement('p');
-            
+
+            const avgscore = items.reviewvo.avgscore;
+
+            articleElem.style.cursor='pointer'
+
             //imgElem.src = 'http://placehold.it/268x320'
             imgElem.src = "/res/img/product/"+items.img+".jpg"
             imgElem.alt = "사진"
 
+            pElem1.classList.add('menutitle');
             pElem1.innerText = items.gnm;
             pElem1.dataset.gnum = items.gnum;
-            pElem2.innerText = items.price.toLocaleString();
-
-            spanElem1.innerText = items.reviewvo.avgscore;
+            pElem1.dataset.gnm = items.gnm;
+            pElem2.innerText = items.price.toLocaleString()+'원';
+            pElem2.dataset.price = items.price;
+            pElem2.classList.add('menuprice');
+            divElem.style.position = 'relative';
+            divElem.style.marginTop = '10px';
+            // spanElem1.innerText = avgscore;
+            spanElem1.classList.add('nostar');
+            starElem.classList.add('star');
             spanElem2.innerText = '리뷰 ' + items.reviewvo.countscore;
             spanElem2.style.marginLeft = '15px'
 
@@ -50,6 +62,15 @@ window.onload = () =>{
             articleElem.append(divElem)
             divElem.append(spanElem1);
             divElem.append(spanElem2);
+
+            console.log(avgscore)
+            starElem.style.width = (spanElem1.offsetWidth/5) * items.reviewvo.avgscore +'px';
+            divElem.append(starElem);
+
+            articleElem.addEventListener('click',() => {
+                location.href=`/goods?gnum=${items.gnum}`
+            })
+
         });
         console.log(data.list);
         /*

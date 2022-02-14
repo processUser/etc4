@@ -29,7 +29,6 @@
 .slide{
     display: flex;
     width: 800%;
-    /* margin-left: -11418px; */
 }
 .slide li{
     width: 100%;
@@ -578,4 +577,33 @@
     background: url(/res/img/common/ico_set.png) no-repeat;
     background-position: -45px -190px;;
     background-size: 800px 800px;
+}
+
+.notice{
+    overflow: hidden;
+    margin-top: 55px;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+}
+.notice div{
+    min-width: 1190px;
+    display: flex;
+    justify-content: center;
+}
+.notice div h2{
+    flex: 1;
+    text-align: center;
+    font-weight: normal;
+    line-height: 35px;
+}
+.notice div ul{
+    flex: 4;
+    padding-left: 20px;
+
+}
+.notice div ul li{}
+.notice div ul li a{
+    font-size: 16px;
+    line-height: 35px;
 }

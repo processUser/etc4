@@ -54,7 +54,7 @@
     </header>
 
     <!-- 내용 -->
-    <section>
+    <section style="position: relative">
         <!-- 슬라이더 -->
         <section class="slideWrap">
             <ul class="slide">
@@ -974,16 +974,22 @@
             </article>
         </section>
         <!-- 공지사항 -->
-        <section>
-            <h2>공지사항</h2>
-            <ul>
-                <li><a href="">공지사항1</a></li>
-                <li><a href="">공지사항2</a></li>
-                <li><a href="">공지사항3</a></li>
-                <li><a href="">공지사항4</a></li>
-                <li><a href="">공지사항5</a></li>
-            </ul>
+        <section class="notice">
+            <div>
+                <h2>공지사항</h2>
+                <ul class="noticeSlide">
+                    <li><a href="">공지사항1</a></li>
+                    <li><a href="">공지사항2</a></li>
+                    <li><a href="">공지사항3</a></li>
+                    <li><a href="">공지사항4</a></li>
+                    <li><a href="">공지사항5</a></li>
+                </ul>
+            </div>
         </section>
+        <!-- 빠른이동 메뉴 -->
+        <aside class="quickMenu quickMenuNone">
+            <a href="">top</a>
+        </aside>
     </section>
     
     <!-- 푸터 -->
@@ -1004,8 +1010,8 @@
             </div>
         </div>
         <div class="footerl">
-            <a href="" class="micon iconB">cj그룹계열사 바로가기</a>
-            <a href="">고객행복센터</a>
+<!--            <a href="" class="micon iconB">cj그룹계열사 바로가기</a>-->
+            <a href="/cs">고객행복센터</a>
         </div>
         <!-- cj그룹계열사 -->
         <div class="cjGroup hide">
@@ -1057,10 +1063,7 @@
             </ul>
         </div>
     </footer>
-    <!-- 빠른이동 메뉴 -->
-    <aside class="quickMenu">
-        <a href="">top</a>
-    </aside>
+
     
     <script src="/res/js/main.js"></script>
 </body>
