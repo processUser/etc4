@@ -14,18 +14,27 @@
     <!-- https://myhappyman.tistory.com/240 -->
     <div class="find">주소찾기</div>
     <script>
-        document.querySelector('.find').addEventListener('click', ()=>{
+       
+        let aclick = ()=> {
+            
             new daum.Postcode({
-            oncomplete: function(data) {
-             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-             // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-             console.log(data)
-             if(data.sido !== '서울' || data.sidoEnglish !== 'Seoul' ){
-                 alert('이용불가')
-             }
-         }
-     }).open();
-        });
+                oncomplete: function(data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+                    // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+                    if(data.sido !== '서울' || data.sidoEnglish !== 'Seoul' ){
+                        alert('배송불가 지역입니다.')
+                        // window.open('http://dmaps.daum.net/map_js_init/postcode.v2.js');
+                        
+                    }else{
+                        alert('배송가능 거주지 입니다');
+                    }
+                },
+                
+            }).open({
+            });
+          
+        }
+        document.querySelector('.find').addEventListener('click', aclick);
     
 </script>
 </body>

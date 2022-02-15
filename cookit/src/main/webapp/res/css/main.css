@@ -216,6 +216,7 @@
 
 /* 추천메뉴 */
 .section3{
+    clear: both;
     overflow: hidden;
     position: relative;
     margin-top: 60px;
@@ -228,12 +229,12 @@
     border: 1px solid blue;
 
 }
+
 .section3 > div > ul{
-    overflow: hidden;
     position: absolute;
     display: inline-block;
     border-bottom: 3px solid black;
-    width: 200px;
+    width: 349px;
     height: 55px;
     z-index: 1;
 }
@@ -298,20 +299,23 @@
     left: 350px;
 
 }
-.section3 article ul{}
+.section3 article ul{
+    display: flex;
+}
 .section3 article ul li{
     float: left;
     display: flex;
     align-items: center;
+    width: 828px;
     border: 1px solid blue;
 }
-.section3 article ul li > a{}
-.section3 article ul li > a img{
-    width: 100%;
+.section3 article ul li > {}
+.section3 article ul li > img{
+    flex: 6;
     height: 520px;
 }
 .section3 article ul li > div{
-    width: 270px;
+    flex: 4;
 }
 .section3 article ul li > div p:first-child{
     font-size: 20px;

@@ -184,4 +184,53 @@
     };
     setInterval(noticeTop, 8000)
 
+    // 배송지검색
+    const addrSearch = document.querySelector('.section2').firstElementChild;
+    addrSearch.style.cursor= 'pointer';
+    addrSearch.addEventListener('click', ()=>{
+        console.log(addrSearch);
+        new daum.Postcode({
+            oncomplete: function(data) {
+                //data는 사용자가 선택한 주소 정보를 담고 있는 객체이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+                if(data.sido !== '서울' || data.sidoEnglish !== 'Seoul' ){
+                    alert('배송불가 지역입니다.')
+                    // window.open('http://dmaps.daum.net/map_js_init/postcode.v2.js');
+
+                }else{
+                    alert('배송가능 거주지 입니다');
+                }
+            }
+        }).open();
+    });
+
+    // 시간 계산.
+    const dateElem = document.querySelector('.date');
+    const dateTimeElem = document.querySelector('.date_time');
+
+    let a = new Date();
+    let t1 = new Date(a.getFullYear(), a.getMonth(), a.getDate()+2, 0, 0, 59);
+
+    dateElem.innerHTML = `${("00"+(t1.getMonth()+1).toString()).slice(-2)}월 ${t1.getDate()}일`
+
+    // let h = ((t1.getDate()-a.getDate())*24)-1;
+    let h = 23 + (24 - t1.getHours());
+    let m = t1.getMinutes();
+    m = 59 - a.getMinutes();
+    let aa = () => {
+        let t2 = new Date();
+        let s = t1.getSeconds()-t2.getSeconds();
+        let ss = ("00"+s.toString()).slice(-2);
+        if(ss === '00'){
+            m -= 1;
+        }
+        if(m === 0){
+            h--;
+            m = 59;
+        }
+        // console.log(typeof m);
+        // document.write(`${h} : ${("00"+m.toString()).slice(-2)} : ${ss}`+'<br>')
+        dateTimeElem.innerHTML='';
+        dateTimeElem.innerHTML=`${("00"+(h-t2.getHours())).slice(-2)} : ${("00"+m.toString()).slice(-2)} : ${ss}`;
+    }
+    setInterval(aa,1000)
 }
