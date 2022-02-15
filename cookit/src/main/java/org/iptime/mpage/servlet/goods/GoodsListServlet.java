@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import org.iptime.mpage.DAO.GoodsDAO;
 import org.iptime.mpage.DAO.ReviewDAO;
 import org.iptime.mpage.Utils;
+import org.iptime.mpage.model.goods.GoodsDto;
 import org.iptime.mpage.model.goods.GoodsEntity;
 import org.iptime.mpage.model.goods.GoodsVo;
 
@@ -31,9 +32,10 @@ public class GoodsListServlet extends HttpServlet {
         String json = Utils.getJson(req);
         System.out.println("json : "+json);
         Gson gosn = new Gson();
-        GoodsEntity entity = gosn.fromJson(json, GoodsEntity.class);
-
-        List<GoodsVo> list = GoodsDAO.selGoodsList(entity);
+        GoodsDto dto = gosn.fromJson(json, GoodsDto.class);
+        System.out.println("defaultimage : "+dto.getDefaultimage());
+        System.out.println("categorypk : "+dto.getCategorypk());
+        List<GoodsVo> list = GoodsDAO.selGoodsList(dto);
 
         //System.out.println("ReviewDAO.selAvg(list.get(i)" + ReviewDAO.selAvg(list.get(1)));
         // 응답시간이 오래걸림.

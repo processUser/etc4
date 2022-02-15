@@ -15,39 +15,45 @@
         categorylistElem.classList.remove('iconT');
     })
     categorylistElem.addEventListener('click', (e) => {
-        let category = e.target.dataset.category;
-        categoryList(category);
+        let categorypk = e.target.dataset.category;
+        let defaultimage = e.target.dataset.defaultimage;
+
+        console.log( e.target.dataset.defaultimage)
+        categoryList(categorypk, defaultimage);
     })
 
-    const categoryList = (category) => {
+    const categoryList = (categorypk, defaultimage) => {
         fetch('http://localhost:8090/goodslist',{
             'method': 'post',
             'headers': {'Content-Type': 'application/json'},
             'body': JSON.stringify({
-                categorypk: category
+                categorypk, defaultimage
             })
         }).then(res =>{
             return res.json();
         } ).then(data => {
+            // console.log(data)
             makeCategoryList(data.list);
         }).catch(e => {
             console.log(e);
         });
     }
-    categoryList(1);
+    categoryList(1, 52);
 
     const makeCategoryList = (data) => {
         const section3Elem = document.querySelector('.section3');
         const articlesElem = document.createElement('article');
         const ulElem = document.createElement('ul');
-        ulElem.classList.add('menuSlideList')
+        ulElem.classList.add('menuSlideList');
+        articlesElem.classList.add('over_hidden');
 
         data.forEach(item => {
             const liElem = document.createElement('li');
             liElem.innerHTML = `
 <!--                <a href="">-->
 <!--                    <img src="/res/img/main/product/520/20210901132409761.png" alt="눈꽃치즈닭갈비">-->
-                    <img src="/res/img/product/${item.img}.jpg" alt="눈꽃치즈닭갈비">
+                    <img src="/res/img/main/product/520/${item.categorypk}/${item.img}.png" alt="${item.gnm}">
+                    
 <!--                </a>-->
                 <div>
                     <p data-gnum="${item.gnum}" data-goodspk="${item.goodspk}">${item.gnm}</p>

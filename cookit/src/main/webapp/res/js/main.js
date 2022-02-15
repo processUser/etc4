@@ -9,7 +9,6 @@
     // 추천 메뉴 넓이
     let section3 = document.querySelectorAll('.section3 article ul')
     //let section3liW = section3[1].children.item(1)
-    console.log(section3)
     for(let i = 0; i < section3.length; i++){
         console.log(((section3[i].children.item(0)).offsetWidth))
         section3[i].style.width = (section3[i].children.length * (section3[i].children.item(0)).offsetWidth)+'px'
@@ -72,9 +71,10 @@
     // slide 추천메뉴
     let bestleftElem = document.querySelector('.bestleft');
 
-    const menuSlideListElem = document.querySelector('.menuSlideList')
+    let menuSlideListElem;
     let menuSlideListElemfirst;
     bestleftElem.addEventListener('click', (e)=>{
+        menuSlideListElem = document.querySelector('.menuSlideList');
         menuSlideListElemfirst = menuSlideListElem.firstElementChild;
         e.preventDefault();
 
@@ -85,6 +85,8 @@
         // ++startNum;
     });
     function l() {
+
+
         menuSlideListElem.style.transition = 0 + "ms";
         menuSlideListElem.style.transform = "translate(0px, 0px)"
         menuSlideListElem.appendChild(menuSlideListElemfirst);
@@ -93,6 +95,7 @@
     //
     let bestrightElem = document.querySelector('.bestright');
     bestrightElem.addEventListener('click', (e)=>{
+        menuSlideListElem = document.querySelector('.menuSlideList');
         let menuSlideListElemlast = menuSlideListElem.lastElementChild;
         e.preventDefault();
         menuSlideListElem.prepend(menuSlideListElemlast);

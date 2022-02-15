@@ -1,6 +1,7 @@
 package org.iptime.mpage.DAO;
 
 import org.iptime.mpage.DbUtils;
+import org.iptime.mpage.model.goods.GoodsDto;
 import org.iptime.mpage.model.goods.GoodsEntity;
 import org.iptime.mpage.model.goods.GoodsVo;
 import org.iptime.mpage.model.goods.ReviewVo;
@@ -15,7 +16,7 @@ import java.util.List;
 public class GoodsDAO {
     // 상품 전체 조회
     // 상품 카테고리별 전체 조회
-    public static List<GoodsVo> selGoodsList (GoodsEntity entity) {
+    public static List<GoodsVo> selGoodsList (GoodsDto dto) {
         List<GoodsVo> list = new ArrayList<>();
 
         Connection con = null;
@@ -28,16 +29,17 @@ public class GoodsDAO {
                 "LEFT JOIN cookit_review C ON A.goodspk = C.goodspk " +
                 "LEFT JOIN cookit_goods_image D ON A.goodspk = D.goodspk ";
 
-        if(entity.getCategorypk() != 0){
-            sql += "WHERE A.categorypk = ? ";
+        if(dto.getCategorypk() > 0){
+            sql += " WHERE A.categorypk = ? AND D.defaultimage = ? ";
         }
-        sql += "GROUP BY goodspk";
+        sql += " GROUP BY A.goodspk ";
 
         try {
             con = DbUtils.getCon();
             ps = con.prepareStatement(sql);
-            if(entity.getCategorypk() != 0){
-                ps.setInt(1, entity.getCategorypk());
+            if(dto.getCategorypk() > 0){
+                ps.setInt(1, dto.getCategorypk());
+                ps.setInt(2, dto.getDefaultimage());
             }
             rs = ps.executeQuery();
 

@@ -9,12 +9,12 @@ const reg = {  // 정규식
 // 빠른 이동 버튼
 document.addEventListener('scroll', () =>{
     // console.log(document.documentElement.scrollHeight);
-    console.log(document.documentElement.scrollTop);
-    console.log(document.documentElement.offsetWidth);
+    // console.log(document.documentElement.scrollTop);
+    // console.log(document.documentElement.offsetWidth);
     let width = document.documentElement.offsetWidth;
     let scrollHight = document.documentElement.scrollTop;
     const quickMenuElem = document.querySelector('.quickMenu');
-    let clientRect = quickMenuElem.getBoundingClientRect();
+    // let clientRect = quickMenuElem.getBoundingClientRect();
     // console.log(clientRect.top);
     if (width > 1300){
         if (scrollHight > 400) {
@@ -51,7 +51,7 @@ function accessToken(token) {
     var base64Payload = encodeURIComponent(tokens.split('.')[1]); //value 0 -> header, 1 -> payload, 2 -> VERIFY SIGNATURE
     var payload = decodeURIComponent(escape(window.atob(base64Payload))); // 한글깨짐 해결 - https://developer.mozilla.org/en-US/docs/Glossary/Base64
     var result = JSON.parse(payload.toString())
-    console.log(result);
+    // console.log(result);
 
     document.cookie = 'accessToken='+ encodeURIComponent(payload.toString()) +';path=/;';
     test(getCookie('accessToken'))
@@ -59,7 +59,7 @@ function accessToken(token) {
 
 function test(data) {
     let a = JSON.parse(decodeURIComponent(escape(data)))
-    console.log(a);
+    // console.log(a);
 
 }
 
