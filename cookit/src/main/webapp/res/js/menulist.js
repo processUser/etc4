@@ -1,19 +1,39 @@
 
 window.onload = () =>{
-    fetch('http://localhost:8090/goodslist',{
-        'method': 'post',
-        'headers': {'Content-Type': 'application/json'},
-        'body': JSON.stringify({
-            categorypk: 0
-        })
-    }).then(res =>{ 
-        return res.json(); 
-    } ).then(data => {
-        console.log(data)
-        goodsList(data)
-    }).catch(e => {
-        console.log(e);
-    });
+    const menuList = (categorypk, defaultimage, desc, countscore) => {
+        fetch('http://localhost:8090/goodslist',{
+            'method': 'post',
+            'headers': {'Content-Type': 'application/json'},
+            'body': JSON.stringify({
+                categorypk, defaultimage, desc, countscore
+            })
+        }).then(res =>{
+            return res.json();
+        } ).then(data => {
+            console.log(data)
+            goodsList(data)
+        }).catch(e => {
+            console.log(e);
+        });
+    }
+
+    menuList()
+
+    const menuChooseElem = document.querySelector('.menuChoose');
+    console.log(menuChooseElem);
+    menuChooseElem.addEventListener('click', (e) =>{
+        console.log(e.target.dataset.category);
+        if(e.target.dataset.category === '0'){
+            menuList();
+        } else if(e.target.dataset.price === '0'){
+            menuList(0,0,2,0);
+        } else if(e.target.dataset.price === '1'){
+            menuList(0,0,1,0);
+        } else if(e.target.dataset.countscore === '1'){
+            menuList(0,0,0,1);
+        }
+
+    })
 
     //http://placehold.it/150x150 - 이미지 대체
 
@@ -21,8 +41,9 @@ window.onload = () =>{
         let jsonlist = data.list;
         
         const listwarpElem = document.getElementById('listwarp');
+        listwarpElem.innerHTML='';
         jsonlist.forEach((items) => {  // 전체 수 만큼 반복.
-            console.log('items : ' + items)
+            // console.log('items : ' + items)
             const articleElem = document.createElement('article');
             const imgElem = document.createElement('img');
             const divElem = document.createElement('div');
@@ -63,7 +84,7 @@ window.onload = () =>{
             divElem.append(spanElem1);
             divElem.append(spanElem2);
 
-            console.log(avgscore)
+            // console.log(avgscore)
             starElem.style.width = (spanElem1.offsetWidth/5) * items.reviewvo.avgscore +'px';
             divElem.append(starElem);
 
@@ -72,7 +93,7 @@ window.onload = () =>{
             })
 
         });
-        console.log(data.list);
+        // console.log(data.list);
         /*
         let jsonlist = data.list[1];
         for(var val in jsonlist) {

@@ -216,7 +216,8 @@
     dateElem.innerHTML = `${("00"+(t1.getMonth()+1).toString()).slice(-2)}월 ${t1.getDate()}일`
 
     // let h = ((t1.getDate()-a.getDate())*24)-1;
-    let h = 23 + (24 - t1.getHours());
+    // let h = 23 + (24 - t1.getHours());
+    let h = 23;
     let m = t1.getMinutes();
     m = 59 - a.getMinutes();
     let aa = () => {

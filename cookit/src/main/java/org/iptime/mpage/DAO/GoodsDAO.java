@@ -29,10 +29,25 @@ public class GoodsDAO {
                 "LEFT JOIN cookit_review C ON A.goodspk = C.goodspk " +
                 "LEFT JOIN cookit_goods_image D ON A.goodspk = D.goodspk ";
 
-        if(dto.getCategorypk() > 0){
+        if(dto.getCategorypk() > 0 && dto.getDefaultimage() > 0){
             sql += " WHERE A.categorypk = ? AND D.defaultimage = ? ";
+        }else if(dto.getDefaultimage() > 0){
+            sql += " WHERE D.defaultimage = ? ";
         }
         sql += " GROUP BY A.goodspk ";
+
+
+        if(dto.getDesc() == 1) {
+            sql += " ORDER BY A.price DESC ";
+        } else if(dto.getDesc() == 2) {
+            sql += " ORDER BY A.price ";
+        } else if(dto.getCountscore() == 1) {
+            sql += " ORDER BY countscore DESC ";
+        } else {
+            sql += " ORDER BY A.goodspk  ";
+        }
+
+
 
         try {
             con = DbUtils.getCon();
@@ -40,6 +55,9 @@ public class GoodsDAO {
             if(dto.getCategorypk() > 0){
                 ps.setInt(1, dto.getCategorypk());
                 ps.setInt(2, dto.getDefaultimage());
+            }else if(dto.getDefaultimage() > 0){
+                ps.setInt(1, dto.getDefaultimage());
+
             }
             rs = ps.executeQuery();
 
@@ -58,6 +76,7 @@ public class GoodsDAO {
                 rvo.setCountscore(rs.getInt("countscore"));
                 vo.setReviewvo(rvo);
                 vo.setImg(rs.getString("img"));
+                System.out.println(vo.getGnm());
                 list.add(vo);
             }
             return list;

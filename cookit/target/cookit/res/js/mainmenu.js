@@ -42,32 +42,115 @@
 
     const makeCategoryList = (data) => {
         const section3Elem = document.querySelector('.section3');
+        section3Elem.lastElementChild.remove();
+
         const articlesElem = document.createElement('article');
         const ulElem = document.createElement('ul');
+
         ulElem.classList.add('menuSlideList');
         articlesElem.classList.add('over_hidden');
 
+        articlesElem.appendChild(ulElem);
+        section3Elem.appendChild(articlesElem);
+
         data.forEach(item => {
             const liElem = document.createElement('li');
+            const divElem = document.createElement('div');
+            const pElem1 = document.createElement('p');
+            const pElem2 = document.createElement('p');
+            const spanElem = document.createElement('span');
+            const aElem = document.createElement('a');
+
             liElem.innerHTML = `
 <!--                <a href="">-->
 <!--                    <img src="/res/img/main/product/520/20210901132409761.png" alt="눈꽃치즈닭갈비">-->
                     <img src="/res/img/main/product/520/${item.categorypk}/${item.img}.png" alt="${item.gnm}">
                     
 <!--                </a>-->
-                <div>
-                    <p data-gnum="${item.gnum}" data-goodspk="${item.goodspk}">${item.gnm}</p>
-                    <p>
-                        <span>${item.price}원</span>
-                        <a>
-                            <span class="hide">장바구니</span>
-                        </a>
-                    </p>
-                </div>
+<!--                <div>-->
+<!--                    <p >상품명</p>-->
+<!--                    <p class="cartBtnWarp">-->
+<!--                        <span></span>-->
+<!--                    </p>-->
+<!--                </div>-->
             `;
+
+            pElem1.innerText = `${item.gnm}`;
+            spanElem.innerText = `${item.price}원`;
+
+            aElem.style.cursor = 'pointer';
+
             ulElem.appendChild(liElem);
+            liElem.appendChild(divElem);
+            divElem.appendChild(pElem1);
+            divElem.appendChild(pElem2);
+            pElem2.appendChild(spanElem);
+            pElem2.appendChild(aElem);
+
+            const param = JSON.stringify({
+                'gnum': `${item.gnum}`,
+                'gnm': `${item.gnm}`,
+                'price': `${item.price}`
+            });
+            aElem.addEventListener('click', (e) =>{
+                // console.log('aaa')
+                setCookie('carts', param);
+                e.preventDefault();
+            })
+
         })
-        articlesElem.appendChild(ulElem);
-        section3Elem.appendChild(articlesElem);
+
+    }
+
+    // 하단 메뉴 리스트
+    const bottomMenuList = (categorypk, defaultimage) => {
+        fetch('http://localhost:8090/goodslist',{
+            'method': 'post',
+            'headers': {'Content-Type': 'application/json'},
+            'body': JSON.stringify({
+                categorypk, defaultimage
+            })
+        }).then(res =>{
+            return res.json();
+        } ).then(data => {
+            console.log(data)
+            makeBottomMenuList(data.list);
+        }).catch(e => {
+            console.log(e);
+        });
+    }
+    bottomMenuList(0, 13);
+
+    const makeBottomMenuList = (data) => {
+        const bottom_menu_list = document.querySelector('.bottom_menu_list');
+        bottom_menu_list.innerHTML='';
+        data.forEach(item => {
+            const dlElem = document.createElement('dl');
+            const dtElem = document.createElement('dt');
+            const ddElem = document.createElement('dd');
+            const aElem = document.createElement('a');
+
+            dtElem.innerHTML = `
+                <img src="/res/img/main/product/132/${item.img}.png" alt="${item.gnm}">
+            `;
+
+            ddElem.innerHTML = `
+                <p>${item.gnm}</p>
+                <p>${item.price}<span>원</span></p>
+            `;
+            ddElem.appendChild(aElem);
+            dlElem.appendChild(dtElem);
+            dlElem.appendChild(ddElem);
+            bottom_menu_list.appendChild(dlElem);
+            const param = JSON.stringify({
+                'gnum': `${item.gnum}`,
+                'gnm': `${item.gnm}`,
+                'price': `${item.price}`
+            });
+            aElem.addEventListener('click', (e) =>{
+                setCookie('carts', param);
+                e.preventDefault();
+            });
+        });
     }
 }

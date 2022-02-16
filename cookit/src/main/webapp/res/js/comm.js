@@ -8,14 +8,10 @@ const reg = {  // 정규식
 }
 // 빠른 이동 버튼
 document.addEventListener('scroll', () =>{
-    // console.log(document.documentElement.scrollHeight);
-    // console.log(document.documentElement.scrollTop);
-    // console.log(document.documentElement.offsetWidth);
     let width = document.documentElement.offsetWidth;
     let scrollHight = document.documentElement.scrollTop;
     const quickMenuElem = document.querySelector('.quickMenu');
-    // let clientRect = quickMenuElem.getBoundingClientRect();
-    // console.log(clientRect.top);
+
     if (width > 1300){
         if (scrollHight > 400) {
             quickMenuElem.classList.remove('quickMenuNone');
@@ -111,3 +107,45 @@ function sendToken() {
 }
 
 //setTimeout(sendToken(),5000);
+
+
+// 장바구니 이벤트
+//     let cartListElem;
+//     setTimeout( ()=>{
+//         cartListElem = document.querySelectorAll('.cartBtn');
+//         console.log(cartListElem)
+//
+//         if(cartListElem){
+//             cartListElem.forEach((cartElem) => {
+//                 cartElem.addEventListener('click', (e) => {
+//                     console.log('장바구니')
+//                     setCookie(1, 11);
+//                     e.preventDefault();
+//                 });
+//             });
+//         }
+//     }, 1000);
+    let values = [];
+    const setCookie = (name, value) => {
+        let getcookie = getCookie(name);
+
+        if(getcookie){
+            // values += value;
+            values.push(encodeURIComponent(value));
+        } else {
+            // values = value;
+            values.push(encodeURIComponent(value));
+        }
+        document.cookie = name + '=' + values + ';path=/';
+
+        let aaa = decodeURIComponent(escape(getcookie))
+        // console.log(decodeURIComponent(escape(getcookie)));
+        // console.log();
+        let bbb = aaa.replaceAll('},{', '} . {');
+        let ccc = bbb.split(' . ');
+        console.log(ccc[0]);
+        console.log(ccc[1]);
+        console.log(bbb);
+        console.log(JSON.parse(ccc[1]));
+        console.log(values);
+    }
