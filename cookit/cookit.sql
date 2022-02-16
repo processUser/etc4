@@ -31,22 +31,68 @@ CREATE TABLE cookit_user(
 /*
 	shipping address Db
 	addresspk - 배송지 pk
-	a - 받는사람
-	b - 주소
-	c - 연락처
-	d - 기본배송지 설정
+	addrnm - 받는사람
+	addr - 주소
+	detailedaddr - 상세주소
+	addrtel - 연락처
+	addrdefault - 기본배송지 설정
 	userpk - 회원 pk
 	
 */
 CREATE TABLE cookit_shipping_address(
 	addresspk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	addrnm VARCHAR(5) not null,
+	addr VARCHAR(100) not null,
+	detailedaddr VARCHAR(50) not null,
+	addrtel VARCHAR(16) not null,
+	addrdefault TINYINT UNSIGNED NOT NULL,
+	userpk INT UNSIGNED NOT NULL
+);
+-- 결제 테이블
+/*
+	결제 Db payment
+	purchasepk - 결제 pk 
+	userpk - 회원 pk
+	goodspk - 상품 pk
+	rdt - 결제일
+*/
+CREATE TABLE cookit_purchase(
+	purchasepk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	goodspk INT UNSIGNED NOT NULL, 
+	userpk INT UNSIGNED NOT NULL, 
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 리뷰 테이블
+/*
+	리뷰 Db
+	reviewpk - 리뷰 pk
+	goodspk - 상품 pk
+	userpk - 회원 pk
+	revscore - 별점 (0~5)
+	revctnt - 리뷰 내용
+	revimg	- 리뷰이미지 1개
+	rdt - 등록일
+	mdt - 수정일
+	isdel - 삭제
+*/
+CREATE TABLE cookit_review(
+	reviewpk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	goodspk INT UNSIGNED NOT NULL, 
+	userpk INT UNSIGNED NOT NULL, 
+	revscore TINYINT UNSIGNED NOT NULL DEFAULT 0 CHECK(revscore >=0 AND revscore<=5),
+	revctnt VARCHAR(1000) NOT NULL DEFAULT '',
+	revimg VARCHAR(10) NOT NULL DEFAULT '',
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	mdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	isdel TINYINT UNSIGNED NOT NULL DEFAULT 0
 );
 
 -- 상품 테이블
 /*
 	상품 Db
 	goodspk - 상품 pk ( select 시 문자가 있다면 속도차이 발생(양이 많은경우 해당)
-	gnum - 상품코드(문자4자리+숫자3 ~ 4자리)
+	gnum - 상품코드(년월 4자리+숫자 4자리)
 	categorypk - 카테고리 pk
 	gnm - 상품명
 	price - 가격
