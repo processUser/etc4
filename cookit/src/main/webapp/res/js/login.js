@@ -30,15 +30,15 @@ window.onload = () =>{
             },
             body: jsonLogin,
         }).then((response) => {
-            console.log(response.headers.get('Authorization'))
+            //console.log(response.headers.get('Authorization'))
             // // refresh token 가저오기
             // // ajax 는 document.cookie 가 안됨..
             // console.log('res - join - response.cookie : ' + response.headers.get('setcookie')) 
-            accessToken(response.headers.get('Authorization'))
+            // accessToken(response.headers.get('Authorization'))
             // refreshToken()
             return response.json();
         }).then((data) => {
-            //console.log(data);
+            console.log(data);
             goLogin(data);
         }).catch((e) => {
             console.log(e);
@@ -54,8 +54,9 @@ window.onload = () =>{
         if(joinUser){
             //agreeCookie('ref', data.rjwt, '/', 14)
             //location.href ="/main.html"
-            console.log(document.cookie);
-            sendToken(1);
+            // console.log(document.cookie);
+            // sendToken(1);
+            location.href='/main'
         }else{
             alert(data.msg);
             formElem.email.focus();

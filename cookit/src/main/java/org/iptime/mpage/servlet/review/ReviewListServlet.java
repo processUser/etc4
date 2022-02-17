@@ -1,13 +1,10 @@
-package org.iptime.mpage.servlet.goods;
+package org.iptime.mpage.servlet.review;
 
 import com.google.gson.Gson;
-import org.iptime.mpage.DAO.GoodsDAO;
 import org.iptime.mpage.DAO.ReviewDAO;
 import org.iptime.mpage.Utils;
 import org.iptime.mpage.model.goods.GoodsDto;
-import org.iptime.mpage.model.goods.GoodsEntity;
-import org.iptime.mpage.model.goods.GoodsVo;
-
+import org.iptime.mpage.model.goods.ReviewVo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,29 +17,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/goodslist")
-public class GoodsListServlet extends HttpServlet {
+@WebServlet("/reviewlist")
+public class ReviewListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        List<ReviewVo> list =  ReviewDAO.selBestReview();
 
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        String json = Utils.getJson(req);
-        //System.out.println("json : "+json);
         Gson gosn = new Gson();
-        GoodsDto dto = gosn.fromJson(json, GoodsDto.class);
-        //System.out.println("defaultimage : "+dto.getDefaultimage());
-        //System.out.println("categorypk : "+dto.getCategorypk());
-        List<GoodsVo> list = GoodsDAO.selGoodsList(dto);
-
-        //System.out.println("ReviewDAO.selAvg(list.get(i)" + ReviewDAO.selAvg(list.get(1)));
-        // 응답시간이 오래걸림.
-//        for(int i = 0; i< list.size(); i++){ // 상품별 리뷰 총 평균, 총 갯수
-//            ReviewDAO.selAvg(list.get(i));
-//        }
-
         Map<String, Object> map = new HashMap<>();
         map.put("list", list);
 
@@ -51,6 +32,24 @@ public class GoodsListServlet extends HttpServlet {
 
         PrintWriter out = res.getWriter();
         out.println(gosn.toJson(map));
-        //System.out.println("gosn.toJson(map) : "+gosn.toJson(map));
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String json = Utils.getJson(req);
+        Gson gosn = new Gson();
+        ReviewVo vo = gosn.fromJson(json, ReviewVo.class);
+
+        List<ReviewVo> list = ReviewDAO.selReviewlist(vo);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("list", list);
+        map.put("page", (ReviewDAO.countReview())/10);
+
+        res.setContentType("text/plain;charset=UTF-8");
+        res.setCharacterEncoding("UTF-8");
+
+        PrintWriter out = res.getWriter();
+        out.println(gosn.toJson(map));
     }
 }

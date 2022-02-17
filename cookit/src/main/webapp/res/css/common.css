@@ -34,7 +34,9 @@ html, body{
     align-items: center;
     padding: 0 70px;
 }
-
+.over_hidden{
+    overflow: hidden;
+}
 .line::before{
     /* li 사이 | 선 표시 */
     content: "";

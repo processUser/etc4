@@ -3,7 +3,7 @@ window.onload = () => {
 
     // submit 버튼 이벤트
     agreeform.submit.addEventListener('click', (e)=>{
-        if(!agreeform.termsOfUse.checked || !agreeform.userInformation.checked || !agreeform.age.checked || !agreeform.notRealpage.checked){
+        if(!agreeform.termsOfUse.checked || !agreeform.userInformation.checked || !agreeform.notRealpage.checked){
             agreeform.termsOfUse.parentNode.style.color = 'red';
             agreeform.userInformation.parentNode.style.color = 'red';
             agreeform.age.parentNode.style.color = 'red';
@@ -15,11 +15,10 @@ window.onload = () => {
                 'termsOfUse': agreeform.termsOfUse.value,
                 userInformation: agreeform.userInformation.value,
                 marketing: agreeform.marketing.value,
-                age: agreeform.age.value,
                 notRealpage: agreeform.notRealpage.value
             }
             ;
-            agreeCookie('agree',JSON.stringify(param), '/', 1); // 1일짜리 쿠키
+            agreeCookie('agree',JSON.stringify(param), '/'); // 1시간 쿠키
             location.href='/join';
         }
     })
@@ -40,7 +39,7 @@ window.onload = () => {
 
     //선택 항목 동의 이벤트
     agreeform.marketing.addEventListener('click', () =>{
-        if(!agreeform.marketing.checked || !agreeform.termsOfUse.checked || !agreeform.userInformation.checked || !agreeform.age.checked || !agreeform.notRealpage.checked){
+        if(!agreeform.marketing.checked || !agreeform.termsOfUse.checked || !agreeform.userInformation.checked || !agreeform.notRealpage.checked){
             agreeform.all.checked = false
         } else{
             agreeform.all.checked = true
@@ -48,9 +47,9 @@ window.onload = () => {
     });
 
     //동의 버튼 클릭시 쿠키생성.
-    function agreeCookie(cKey, cName, cPath, day) {
+    function agreeCookie(cKey, cName, cPath) {
         var date = new Date();
-        date.setTime(date.getTime() + (day * 24 * 60 * 60 * 1000)); 
+        date.setTime(date.getTime() + (60 * 60 * 1000));  // 1시간
         cookies = cKey +'='+ encodeURI(cName) +'; path='+ cPath +'; expires='+ date;
         document.cookie = cookies;
     }

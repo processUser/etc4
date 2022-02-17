@@ -45,7 +45,7 @@ public class TestJWT {
         return jwt;
     }
 
-    public String createRefreshToken(int val, String ip2, String path1, int path2, String key) throws Exception {
+    public static String createRefreshToken(int val, int userpk, String key) throws Exception {
 
         //Header 부분 설정정
         Map<String, Object> headers = new HashMap<>();
@@ -56,12 +56,10 @@ public class TestJWT {
         Map<String, Object> payloads = new HashMap<>();
         payloads.put("data", "My JWT");
         payloads.put("Succeeded!", val);
-        payloads.put("ip", ip2);
-        payloads.put("url1", path1);
-        payloads.put("url2", path2);
+        payloads.put("u", userpk);
 
 
-        Long expiredTime = 1000 * 60L * 60L * 24L * 14L; // 1000 * 60L * 60L * 2L 토큰 유효 시간 (2시간)
+        Long expiredTime = 1000 * 60L * 60L * 24L * 14L; // 1000 * 60L * 60L * 24L * 14L 토큰 유효 시간 (2주)
 
         Date ext = new Date(); // 토큰 만료 시간
         ext.setTime(ext.getTime() + expiredTime);

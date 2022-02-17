@@ -14,8 +14,8 @@ public class UserDAO {
     public static int insAgree(AgreeEntity entity){
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into cookit_agree(userpk, termsOfUse, userInformation, marketing, age, notRealpage) " +
-                "values(?, ?, ?, ?, ?, ?)";
+        String sql = "insert into cookit_agree(userpk, termsOfUse, userInformation, marketing, notRealpage) " +
+                "values(?, ?, ?, ?, ?)";
 
         try {
             con = DbUtils.getCon();
@@ -24,8 +24,7 @@ public class UserDAO {
             ps.setInt(2, entity.getTermsOfUse());
             ps.setInt(3, entity.getUserInformation());
             ps.setInt(4, entity.getMarketing());
-            ps.setInt(5, entity.getAge());
-            ps.setInt(6, entity.getNotRealpage());
+            ps.setInt(5, entity.getNotRealpage());
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

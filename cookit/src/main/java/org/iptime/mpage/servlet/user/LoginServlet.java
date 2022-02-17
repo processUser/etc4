@@ -40,12 +40,13 @@ public class LoginServlet extends HttpServlet {
         String json = Utils.getJson(req);
         //System.out.println("json : " + json);
         Gson gson = new Gson();
-
+        /*
         //InetAddress ip = Inet4Address.getLocalHost();  // 출력 - ip : DESKTOP-FU2AS1G/192.168.2.13
         String ip2 = Inet4Address.getLocalHost().getHostAddress();  // 출력 - ip2 : 192.168.2.13
         //String ip3 = req.getRemoteAddr();   // 출력 - ip3 : 0:0:0:0:0:0:0:1
         //String uri = req.getRequestURI();   // 출력 - uri : /login
         StringBuffer url = req.getRequestURL();   // 출력 - url : http://localhost:8090/login
+        */
 
         UserDTO dto = gson.fromJson(json, UserDTO.class);
         //dto.setUrl(url.toString());
@@ -62,12 +63,9 @@ public class LoginServlet extends HttpServlet {
             if(BCrypt.checkpw(pw, vo.getPw())) {
                 // 로그인성공
                 result = 1; // 성공 1
-
+                int setsession = Utils.setSession(req, vo);
                 try {
-                    TestJWT testjwt = new TestJWT();
-                    jwt = testjwt.createAccessToken(vo, dto.getPreUrl()); // 토큰생성
-                    res.setHeader("Authorization", "Bearer "+jwt);
-                    if(jwt != null){
+                    if(setsession == 1){
                         String key = "";
                         if(key.equals(vo.getUkey())){
                             key = SecretKey.makeUuid(); // 키생성
@@ -77,7 +75,8 @@ public class LoginServlet extends HttpServlet {
                         //TODO key 값 db 저장
                         int updkey = UserDAO.updKey(vo, key);
                         if(updkey == 1){
-                            rjwt = testjwt.createRefreshToken(result, ip2, dto.getPreUrl(), vo.getUserpk(), key);
+
+                            rjwt = TestJWT.createRefreshToken(result, vo.getUserpk(), key);
                             //------------------------------------
                             //cookie 저장
                             Cookies.setCookie(res, rjwt);
@@ -101,7 +100,6 @@ public class LoginServlet extends HttpServlet {
 
         UserResult ur = new UserResult();
         ur.setResult(result);
-        ur.setRjwt(rjwt);
         if (result == 0) {
             ur.setMsg("아이디 비밀번호를 확인 하세요");
         }

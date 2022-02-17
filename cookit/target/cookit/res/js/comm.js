@@ -93,20 +93,21 @@ function sendToken() {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(tokens),
+        //body: JSON.stringify(tokens),
         // credentials: 'include',
     }).then((response) => {
-        accessToken(response.headers.get('Authorization'))
+        //accessToken(response.headers.get('Authorization'))
         //console.log(response)
+        return response.json();
     }).then((data) => {
-        //console.log('checktoken : '+ data);
+        console.log(data);
     }).catch((e) => {
         console.log(e);
     })
     //console.log('document.cookie : ' + document.cookie) // ajax에서는 안됨.
 }
 
-//setTimeout(sendToken(),5000);
+setTimeout(sendToken(),5000);
 
 
 // 장바구니 이벤트

@@ -11,9 +11,7 @@
 .backBlack{
     background-color: #000;
 }
-.over_hidden{
-    overflow: hidden;
-}
+
 .zIndex{
     z-index: 1;
 }

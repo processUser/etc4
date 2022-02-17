@@ -13,6 +13,7 @@
    joinpath - 회원가입 경로 0- 관리자 but 0 설정 막기,  1- 홈페이지, 2- 네이버, etc
               지정 경로 이외의 값 ex) 0 이 넘어오면 가입 거절
    deluser - 삭제여부 정상유지- 0, 삭제- 1 
+   ukey - 
 */
 CREATE TABLE cookit_user(
    userpk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -20,13 +21,36 @@ CREATE TABLE cookit_user(
    pw VARCHAR(500) NOT NULL,
    nm VARCHAR(5) NOT NULL,
    gender TINYINT UNSIGNED NOT NULL CHECK(gender IN (1, 2, 3)),
-   birthdaymm VARCHAR(2) NOT NULL CHECK(birthdaymm >= 01 AND birthdaymm <= 09),
-   birthdaydd VARCHAR(2) NOT NULL CHECK(birthdaydd >= 01 AND birthdaydd <= 31),
+   birthdaymm VARCHAR(2) NOT NULL DEFAULT 01 CHECK(birthdaymm >= 01 AND birthdaymm <= 09),
+   birthdaydd VARCHAR(2) NOT NULL DEFAULT 01 CHECK(birthdaydd >= 01 AND birthdaydd <= 31),
    rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
    ldt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
    joinpath TINYINT UNSIGNED NOT NULL CHECK(joinpath >= 0),
-   deluser TINYINT UNSIGNED NOT NULL DEFAULT 0 CHECK(deluser >= 0 AND deluser <= 1)
+   deluser TINYINT UNSIGNED NOT NULL DEFAULT 0 CHECK(deluser >= 0 AND deluser <= 1),
+   ukey VARCHAR(50) UNIQUE NOT NULL DEFAULT ''
 );
+-- 회원가입 동의 테이블 
+/*
+   회원가입 동의 Db
+   agreepk - 동의 정보pk
+   userpk - 회원 pk
+   termsOfUse - 이용약관
+   userInformation - 개인정보
+   marketing - 마케팅
+   notRealpage -
+   rdt - 
+*/
+CREATE TABLE cookit_agree(
+	agreepk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	userpk INT UNSIGNED NOT NULL,
+	termsOfUse TINYINT UNSIGNED NOT NULL CHECK(termsOfUse IN(0,1)),
+	userInformation TINYINT UNSIGNED NOT NULL CHECK(userInformation IN(0,1)),
+	marketing TINYINT UNSIGNED NOT NULL DEFAULT 0 CHECK(marketing IN(0,1)),
+	notRealpage TINYINT UNSIGNED NOT NULL CHECK(notRealpage IN(0,1)),
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+
 -- 배송지 테이블
 /*
 	shipping address Db
@@ -119,7 +143,7 @@ CREATE TABLE cookit_goods(
 */
 CREATE TABLE cookit_goods_category(
 	categorypk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-	categorynm VARCHAR(10) NOT NULL,
+	categorynm VARCHAR(10) NOT NULL
 );
 
 -- 상품 이미지 테이블

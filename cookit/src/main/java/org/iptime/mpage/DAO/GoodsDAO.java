@@ -76,7 +76,7 @@ public class GoodsDAO {
                 rvo.setCountscore(rs.getInt("countscore"));
                 vo.setReviewvo(rvo);
                 vo.setImg(rs.getString("img"));
-                System.out.println(vo.getGnm());
+                //System.out.println(vo.getGnm());
                 list.add(vo);
             }
             return list;

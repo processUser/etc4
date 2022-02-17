@@ -163,8 +163,8 @@ window.onload = () => {
             login.pw = formElem.upw.value;
             login.nm = formElem.nm.value;
             login.gender = formElem.gender.value === '' ? '03':formElem.gender.value; // 선택 안함
-            login.birthdaymm = formElem.birthdaymm.value === '' ? '00':formElem.birthdaymm.value; // 기본값 00 
-            login.birthdaydd = formElem.birthdaydd.value === '' ? '00':formElem.birthdaydd.value; // 기본값 00 
+            login.birthdaymm = formElem.birthdaymm.value === '' ? '01':formElem.birthdaymm.value; // 기본값 00
+            login.birthdaydd = formElem.birthdaydd.value === '' ? '01':formElem.birthdaydd.value; // 기본값 00
             login.joinpath = formElem.joinpath.value;
             login.agree = JSON.parse(decodeURI(cookieValue));
             
