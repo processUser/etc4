@@ -44,13 +44,13 @@ public class RefreshTokenCheckServlet extends HttpServlet {
         int result = 0;
 //        System.out.println(cookies);
         for (Cookie cookie : cookies){
-            System.out.println(cookie);
-            System.out.println(cookie.getName());
-            System.out.println(cookie.getValue());
+//            System.out.println(cookie);
+//            System.out.println(cookie.getName());
+//            System.out.println(cookie.getValue());
 
             if("tokens".equals(cookie.getName())){
                 try {
-                    Map<String, Object> map = jwt.verifyJWT(cookies[1].getValue(), "YzY4Mjk5MWMtNWM0Ni00YmUzLTljYmQtNmM3ODQxOTEzYTNj");
+                    Map<String, Object> map = jwt.verifyJWT(cookie.getValue(), "YzY4Mjk5MWMtNWM0Ni00YmUzLTljYmQtNmM3ODQxOTEzYTNj");
                     System.out.println("map userpk : "+map.get("u"));
                     UserDTO dto = new UserDTO();
                     dto.setUserpk((int) map.get("u"));
@@ -61,7 +61,7 @@ public class RefreshTokenCheckServlet extends HttpServlet {
                         break;
                     }
                 } catch (Exception e){
-
+                    e.printStackTrace();
                 }
             }
         }

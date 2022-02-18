@@ -64,6 +64,7 @@ public class LoginServlet extends HttpServlet {
                 // 로그인성공
                 result = 1; // 성공 1
                 int setsession = Utils.setSession(req, vo);
+                System.out.println("로그인성공");
                 try {
                     if(setsession == 1){
                         String key = "";

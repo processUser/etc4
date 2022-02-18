@@ -83,6 +83,17 @@ public class Utils {
         return 1;
     }
 
+    public static UserVo getLoginUser(HttpServletRequest req) {
+        HttpSession hs = req.getSession();
+        return (UserVo) hs.getAttribute("loginUser");
+    }
+
+    public static int getLoginUserPk(HttpServletRequest req) {
+        UserVo loginUser = getLoginUser(req);
+        if(loginUser == null) { return 0; }
+        return loginUser.getUserpk();
+    }
+
     public static void disForward(HttpServletRequest req, HttpServletResponse res, String jsp) throws ServletException, IOException{
         req.getRequestDispatcher("/WEB-INF/view/"+jsp+".html").forward(req, res);
     }

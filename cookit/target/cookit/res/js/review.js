@@ -29,7 +29,9 @@
             `;
             best_review_listElem.appendChild(divElem);
         });
+
         best_review_listElem.style.width = 290 * data.length +'px';
+
         const nostarElemList = document.querySelectorAll('.nostar');
         const starElemList = document.querySelectorAll('.star');
         console.log(starElemList)
@@ -38,22 +40,7 @@
         })
     }
 
-    // const best_review_listElem = document.querySelector('.best_review_list');
-    const reviewSlide = () =>{
-        best_review_listElem = document.querySelector('.best_review_list');
-        console.log(best_review_listElem.firstElementChild)
-        best_review_listElem.style.transition = 4 + "s";
-        best_review_listElem.style.transform = "translate(-" + 280 + "px, 0px)";
 
-        best_review_listElem.addEventListener('transitionend', () => {
-            let firstDivElem = best_review_listElem.firstElementChild;
-            console.log(firstDivElem)
-            best_review_listElem.style.transition = 0 + "ms";
-            best_review_listElem.style.transform = "translate(0px, 0px)"
-            best_review_listElem.appendChild(firstDivElem);
-        });
-    }
-    setInterval(reviewSlide, 6000);
 
     const ReviewList = (page) => {
         fetch('http://localhost:8090/reviewlist',{

@@ -4,6 +4,11 @@
     display: grid;
     grid-template-columns: 2fr 8fr;
 }
+.myclick{
+    font-weight: 800;
+    color: #ffffff;
+    background-color: #bfd918;
+}
 .section article{
     margin-top: 45px;
 }
@@ -29,13 +34,18 @@
 }
 .myinfo_view_list h1{
     font-size: 40px;
+    color: #bfd918;
 }
 .cart_check{
     margin: 15px 0;
     height: 35px;
 }
 .cart_check div{
+    cursor: pointer;
     float: left;
+    width: 75px;
+    text-align: center;
+    line-height: 35px;
 }
 .line::before{
     background-color: black;
@@ -60,4 +70,81 @@
 }
 .cart_list_quant{
     margin: 0 10px;
+}
+
+/*회원정보 , 배송지 수정 css*/
+
+.cart_check{}
+.cart_check div:nth-of-type(1){}
+.cart_check div:nth-of-type(2){
+    margin-left: 20px;
+}
+
+.display_none{
+    display: none;
+}
+input, select{
+    padding: 5px 10px;
+    margin-left: 25px;
+    width: 365px;
+    border: 0;
+    font-size: 22px;
+    border-bottom: #BDD61A solid 1px;
+}
+select{
+    width: 385px;
+}
+.birth input{
+    width: 170px;
+}
+.cart_list{
+    margin-left: 45px;
+}
+.cart_list div{
+    margin-top: 25px;
+}
+
+.cart_list span{
+    display: inline-block;
+    width: 65px;
+    font-size: 18px;
+    border-right: 2px dotted #bfd918;
+}
+
+.cart_list .info_button{
+    margin-top: 45px;
+    margin-left: 125px;
+    width: 200px;
+    height: 45px;
+    font-size: 22px;
+    line-height: 45px;
+    text-align: center;
+    background-color: #bfd918;
+    cursor: pointer;
+}
+.info_button:hover{
+    font-weight: 800;
+}
+
+
+.addr{
+    width: 600px;
+}
+.detailedaddr{
+    margin-top: 25px;
+    margin-left: 94px;
+}
+.addrWarp{
+    clear: both;
+    margin-top: 25px;
+    border-bottom: 1px dotted #000000;
+}
+.cart_list .deladdr{
+    cursor: pointer;
+    float: right;
+    margin-top: 0;
+    margin-right: 75px;
+}
+.deladdr:hover{
+    border-bottom: 3px solid #000000;
 }

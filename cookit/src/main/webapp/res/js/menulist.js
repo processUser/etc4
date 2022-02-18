@@ -18,7 +18,7 @@ window.onload = () =>{
     }
 
     menuList()
-
+    //  리스트 선택
     const menuChooseElem = document.querySelector('.menuChoose');
     console.log(menuChooseElem);
     menuChooseElem.addEventListener('click', (e) =>{

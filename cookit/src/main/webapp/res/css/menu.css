@@ -26,6 +26,9 @@
     font-weight: bold;
 
 }
+.section > div ul li{
+    cursor: pointer;
+}
 .lineb::before{
     height: 15px;
     background-color: black;

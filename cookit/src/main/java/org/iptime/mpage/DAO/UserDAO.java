@@ -58,6 +58,40 @@ public class UserDAO {
         }
         return 0;
     }
+
+    // 유저 정보 조회
+    public static UserVo selUser(UserDTO dto){
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT userpk, email, nm, gender, birthdaymm, birthdaydd, joinpath FROM cookit_user WHERE userpk = ? AND deluser = 0;";
+
+        try {
+            con = DbUtils.getCon();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, dto.getUserpk());
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                UserVo vo = new UserVo();
+                vo.setUserpk(rs.getInt("userpk"));
+                vo.setEmail(rs.getString("email"));
+                vo.setNm(rs.getString("nm"));
+                vo.setGender(rs.getInt("gender"));
+                vo.setBirthdaymm(rs.getString("birthdaymm"));
+                vo.setBirthdaydd(rs.getString("birthdaydd"));
+                vo.setJoinpath(rs.getInt("joinpath"));
+                return vo;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.close(con,ps);
+        }
+        return null;
+    }
+
     // 로그인
     public static UserVo loginUser(UserDTO dto){
         Connection con = null;

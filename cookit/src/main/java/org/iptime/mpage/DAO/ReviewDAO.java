@@ -71,7 +71,7 @@ public class ReviewDAO {
                 " WHERE revscore >= 4.0 " +
                 " GROUP BY A.goodspk " +
                 " ORDER BY revscore DESC " +
-                " LIMIT 0, 10;";
+                " LIMIT 0, 4;";
 
         try {
             con = DbUtils.getCon();
