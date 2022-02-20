@@ -22,7 +22,7 @@ window.onload = () =>{
 
     // 홈페이지 로그인 처리 
     function insLogin(jsonLogin){
-        let url = "http://localhost:8090/login"    
+        let url = "/login"
         fetch(url,{
             method: "POST",
             headers: {
@@ -97,7 +97,7 @@ window.onload = () =>{
     function useToken(data) {
         //console.log("65000")
         //console.log("tokens"+data.substr(6))
-        let url = "http://localhost:8090/checktoken"    
+        let url = "http://localhost:8090/checktoken"
         fetch(url,{
             method: "POST",
             headers: {

@@ -36,7 +36,7 @@
     // 리스트별 이벤트 걸기
     for(let i = 0; i < myinfo_category_list.length; i++){
        myinfo_category_list[i].addEventListener('click', () => {
-           fetch( 'http://localhost:8090'+urllist[i])
+           fetch( urllist[i])
                .then(res => res.text())
                .then(data =>{
                    console.log(urllist[i])
@@ -71,7 +71,7 @@
     myinfo_category_list_click('/my/userinfo',0)
 
     const myinfo_view = () => {
-        fetch('http://localhost:8090/my/userinfo',{
+        fetch('/my/userinfo',{
             'method': 'post',
             'headers': {'Content-Type': 'application/json'},
             'body': JSON.stringify({
@@ -84,7 +84,6 @@
             setMyinfoValue(data.userinfo);
             setaddrValue(data.addrinfo);
             myinfo_click()
-            addrSearch()
         }).catch(e => {
             console.log(e);
         });
@@ -148,8 +147,9 @@
             divElem1.classList.add('deladdr');
             divElem1.innerText='삭제';
             addrWarpElem.prepend(divElem1);
+
             divElem1.addEventListener('click', () =>{
-                fetch('http://localhost:8090/my/userinfo/del',{
+                fetch('/my/userinfo/del',{
                     'method': 'post',
                     'headers': {'Content-Type': 'application/json'},
                     'body': JSON.stringify({
@@ -180,7 +180,7 @@
                 const detailedaddrValue = document.querySelector('.detailedaddr');
                 const addrtelValue = document.querySelector('.addrtel');
                 const addrnmValue = document.querySelector('.addrnm');
-                fetch('http://localhost:8090/my/addrinfo/upd',{
+                fetch('/my/addrinfo/upd',{
                     'method': 'post',
                     'headers': {'Content-Type': 'application/json'},
                     'body': JSON.stringify({
@@ -211,6 +211,7 @@
     const myinfo_click = () => {
         const cart_check_click = document.querySelector('.cart_check');
         cart_check_click.firstElementChild.addEventListener('click', () => {
+            myinfo_view();
             cart_check_click.firstElementChild.classList.add('myclick');
             cart_check_click.lastElementChild.classList.remove('myclick');
             const cart_list = document.querySelectorAll('.cart_list');
@@ -218,11 +219,13 @@
             cart_list[0].classList.remove('display_none');
         })
         cart_check_click.lastElementChild.addEventListener('click', () => {
+            myinfo_view();
             cart_check_click.lastElementChild.classList.add('myclick');
             cart_check_click.firstElementChild.classList.remove('myclick');
             const cart_list = document.querySelectorAll('.cart_list');
             cart_list[0].classList.add('display_none');
             cart_list[1].classList.remove('display_none');
+            addrSearch()
 
         })
     }
@@ -231,7 +234,7 @@
     const addrSearch = () => {
         // 배송지검색
         const addrElem = document.querySelector('.addr');
-        addrElem.style.cursor= 'pointer';
+        // addrElem.style.cursor= 'pointer';
         addrElem.addEventListener('click', ()=>{
             console.log(addrElem);
             new daum.Postcode({

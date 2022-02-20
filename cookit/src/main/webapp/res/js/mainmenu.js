@@ -23,7 +23,7 @@
     })
 
     const categoryList = (categorypk, defaultimage) => {
-        fetch('http://localhost:8090/goodslist',{
+        fetch('/goodslist',{
             'method': 'post',
             'headers': {'Content-Type': 'application/json'},
             'body': JSON.stringify({
@@ -104,7 +104,7 @@
 
     // 하단 메뉴 리스트
     const bottomMenuList = (categorypk, defaultimage) => {
-        fetch('http://localhost:8090/goodslist',{
+        fetch('/goodslist',{
             'method': 'post',
             'headers': {'Content-Type': 'application/json'},
             'body': JSON.stringify({

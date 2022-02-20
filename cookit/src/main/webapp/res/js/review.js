@@ -19,7 +19,7 @@
         data.forEach((item) => {
             const divElem = document.createElement('div');
             divElem.innerHTML = `
-                <img src="http://placehold.it/240x260" class="best_review_img" alt="${item.gnm}">
+                <img src="http://placehold.it/240x260"  class="best_review_img" alt="${item.gnm}">
                 <p>${item.gnm}</p>
                 <div class="star_warp">
                     <span class="nostar"></span>
@@ -43,7 +43,7 @@
 
 
     const ReviewList = (page) => {
-        fetch('http://localhost:8090/reviewlist',{
+        fetch('/reviewlist',{
             'method': 'post',
             'headers': {'Content-Type': 'application/json'},
             'body': JSON.stringify({

@@ -87,7 +87,7 @@ function sendToken() {
     let tokens = {
         'preUrl': document.URL, // 이전 url
     }
-    let url = "http://localhost:8090/refreshtoken"
+    let url = "/refreshtoken"
     fetch(url,{
         method: "POST",
         headers: {
@@ -107,7 +107,7 @@ function sendToken() {
     //console.log('document.cookie : ' + document.cookie) // ajax에서는 안됨.
 }
 
-setTimeout(sendToken(),5000);
+// setTimeout(sendToken(),5000);
 
 
 // 장바구니 이벤트

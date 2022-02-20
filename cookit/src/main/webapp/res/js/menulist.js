@@ -1,7 +1,7 @@
 
 window.onload = () =>{
     const menuList = (categorypk, defaultimage, desc, countscore) => {
-        fetch('http://localhost:8090/goodslist',{
+        fetch('http://mpage.iptime.org:10200/goodslist',{
             'method': 'post',
             'headers': {'Content-Type': 'application/json'},
             'body': JSON.stringify({

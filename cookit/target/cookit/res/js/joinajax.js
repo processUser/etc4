@@ -2,7 +2,8 @@
 // 회원가입 실행
 function insLogin(jsonLogin){
     console.log('insLogin')
-    let url = "http://localhost:8090/join"    
+    // let url = "http://localhost:8090/join"
+    let url = "/join"
     fetch(url,{
         method: "POST",
         headers: {
