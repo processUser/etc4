@@ -45,6 +45,11 @@
                    }
                    myinfo_category_list_click(urllist[i], i)
                    view_warp.innerHTML = data;
+                   if(urllist[i] === '/my/pwchange'){
+                       check_pw();
+                       pwbutton();
+                   }
+
                }).catch(err =>{
                   console.log(err)
                });
@@ -59,7 +64,6 @@
 
             } else if(url ==='/my/pwchange'){
                 myinfo_category_list[i].classList.add('myclick');
-
             } else if(url ==='/my/payhistory'){
                 myinfo_category_list[i].classList.add('myclick');
 
@@ -253,6 +257,31 @@
         });
     }
 
+    // 현재 비밀번호 확인
+    const pwbutton = () => {
+        const change_buttonElem = document.querySelector('.change_button');
+        console.log(change_buttonElem);
+        change_buttonElem.addEventListener('click',()=>{
+            const beforepw = document.querySelector('.beforepw').value;
+            const pw = document.querySelector('.upw').value;
 
+            const param = {
+                beforepw, pw
+            }
 
+            fetch('/my/pwchange/upd',{
+                'method': 'post',
+                'headers': {'Content-Type': 'application/json'},
+                'body': JSON.stringify(param)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    
+                }).catch(err => {
+                console.log(err);
+            })
+        });
+
+    }
 }

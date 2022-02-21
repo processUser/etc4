@@ -147,6 +147,6 @@ function sendToken() {
         console.log(ccc[0]);
         console.log(ccc[1]);
         console.log(bbb);
-        console.log(JSON.parse(ccc[1]));
+        console.log(JSON.parse(ccc[0]));
         console.log(values);
     }

@@ -12,4 +12,6 @@ public class UserDTO extends UserEntity { // db 조회에 이용할 값을 담�
     public String preUrl; // 이전 url
     public AgreeEntity agree;
 
+    public String beforepw; // 현재 비밀번호
+
 }

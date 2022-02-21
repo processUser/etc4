@@ -148,3 +148,16 @@ select{
 .deladdr:hover{
     border-bottom: 3px solid #000000;
 }
+/*비밀번호 변경*/
+.pw_change{}
+.pw_change span{
+    width: 125px;
+}
+.pw_change span input{}
+
+.err{
+    color: red;
+}
+.errBorder{
+    border-bottom: 1px solid red;
+}

@@ -183,4 +183,26 @@ public class UserDAO {
         }
         return 0;
     }
+
+    public static int updUser(UserDTO dto){
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "UPDATE cookit_user SET pw = ? WHERE userpk = ? AND email = ?;";
+
+        try {
+            con = DbUtils.getCon();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dto.getPw());
+            ps.setInt(2, dto.getUserpk());
+            ps.setString(3, dto.getEmail());
+            return ps.executeUpdate();
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.close(con,ps,rs);
+        }
+        return 0;
+    }
 }
