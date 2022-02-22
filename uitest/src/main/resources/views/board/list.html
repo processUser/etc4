@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>리스트</title>
+</head>
+<body>
+    <h1>리스트</h1>
+    <div id="board_list">
+        <table class="table table-hover caption-top">
+            <thead>
+                <tr class="table-secondary">
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>글쓴이</th>
+                    <th>조회수</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="record" th:each="item : ${list}">
+                    <td th:text="${item.iboard}"></td>
+                    <td><a th:href="@{/board/detail(iboard=${item.iboard})}" th:text="${item.title}"></a></td>
+                    <td th:text="${item.hits}"></td>
+                    <td th:text="${item.writernm}"></td>
+                    <td th:text="${item.rdt}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>제목</title>
+</head>
+
+<body>
+  <h1>디테일</h1>
+  <div id="board_detail">
+    <div>조회수: [[${item.hits}]] | 등록일시: [[${item.rdt}]]</div>
+    <div>글쓴이: [[${item.writernm}]]</div>
+    <div>제목: <span th:text="${item.title}"></span></div>
+    <hr>
+    <div th:text="${item.ctnt}"></div>
+  </div>
+</body>
+</html>
