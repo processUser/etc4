@@ -37,8 +37,8 @@ public class UserDAO {
     public static int insUser(UserDTO dto){
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "insert into cookit_user(email, pw, nm, gender, birthdaymm, birthdaydd, joinpath) " +
-                "values(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into cookit_user(email, pw, nm, gender, birthdaymm, birthdaydd, joinpath, ukey) " +
+                "values(?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             con = DbUtils.getCon();
@@ -50,6 +50,7 @@ public class UserDAO {
             ps.setString(5, dto.getBirthdaymm());
             ps.setString(6, dto.getBirthdaydd());
             ps.setInt(7, dto.getJoinpath());
+            ps.setString(8, dto.getUkey());
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

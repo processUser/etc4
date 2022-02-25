@@ -110,7 +110,6 @@
 
     // 배송지 정보 받아와서 뿌리기
     const setaddrValue = (data) => {
-        let i =0;
         const secListElem =  document.querySelectorAll('.cart_list')[1];
         secListElem.innerHTML='';
         data.forEach((item) => {
@@ -166,14 +165,9 @@
             divElem2.classList.add('info_button');
             divElem2.innerText='정보수정';
             addrWarpElem.appendChild(divElem2);
-            const addrdefaultElem = document.querySelector('.addrdefault');
-            // const addrValue = document.querySelector('.addr');
-            // const detailedaddrValue = document.querySelector('.detailedaddr');
-            // const addrtelValue = document.querySelector('.addrtel');
-            // const addrnmValue = document.querySelector('.addrnm');
 
             divElem2.addEventListener('click', () =>{
-                console.log(addrdefaultElem);
+                const addrdefaultElem = document.querySelector('.addrdefault');
                 let addrdefault=1;
                 if(addrdefaultElem.checked){
                     addrdefault = 0;
@@ -181,19 +175,11 @@
                     addrdefault = 1;
                 }
 
-                const addrValue = document.querySelectorAll('.addr');
-                const detailedaddrValue = document.querySelectorAll('.detailedaddr');
-                const addrtelValue = document.querySelectorAll('.addrtel');
-                const addrnmValue = document.querySelectorAll('.addrnm');
-                console.log(addrValue.value);
-                console.log({
-                    'addresspk': `${item.addresspk}`,
-                    'addr': addrValue[i].value,
-                    'detailedaddr': detailedaddrValue[i].value,
-                    'addrtel': addrtelValue[i].value,
-                    'addrnm': addrnmValue[i].value,
-                    'addrdefault': addrdefault
-                })
+                const addrValue = document.querySelector('.addr');
+                const detailedaddrValue = document.querySelector('.detailedaddr');
+                const addrtelValue = document.querySelector('.addrtel');
+                const addrnmValue = document.querySelector('.addrnm');
+
                 fetch('/my/addrinfo/upd',{
                     'method': 'post',
                     'headers': {'Content-Type': 'application/json'},
@@ -209,19 +195,15 @@
                     .then(res => res.json())
                     .then(data => {
                         if(data.result){
-                            // location.href = location.href;
+                            location.href = location.href;
                         }else {
                             alert('수정 실패!')
                         }
                     }).catch(err => {
                     console.log(err);
-                })
+                });
             });
-            i++;
         }); //for 문종료
-
-
-
     }
 
 

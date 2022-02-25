@@ -2,6 +2,7 @@ package org.iptime.mpage.servlet.user;
 
 import com.google.gson.Gson;
 import org.iptime.mpage.DAO.UserDAO;
+import org.iptime.mpage.SecretKey;
 import org.iptime.mpage.Utils;
 import org.iptime.mpage.model.user.UserDTO;
 import org.iptime.mpage.model.user.UserResult;
@@ -31,7 +32,7 @@ public class JoinServlet extends HttpServlet {
         String pw = dto.getPw();
 
         dto.setPw(BCrypt.hashpw(pw, BCrypt.gensalt())); // 비밀번호 암호화
-
+        dto.setUkey(SecretKey.makeUuid());
         UserResult us = new UserResult();
 
         int result = UserDAO.insAgree(dto.agree);
