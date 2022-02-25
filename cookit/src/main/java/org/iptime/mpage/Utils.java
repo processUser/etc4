@@ -82,6 +82,10 @@ public class Utils {
         session.setAttribute("loginUser", vo);
         return 1;
     }
+    public static void logoutSession(HttpServletRequest req){
+        HttpSession session = req.getSession();
+        session.invalidate();
+    }
 
     public static UserVo getLoginUser(HttpServletRequest req) {
         HttpSession hs = req.getSession();
@@ -95,6 +99,6 @@ public class Utils {
     }
 
     public static void disForward(HttpServletRequest req, HttpServletResponse res, String jsp) throws ServletException, IOException{
-        req.getRequestDispatcher("/WEB-INF/view/"+jsp+".html").forward(req, res);
+        req.getRequestDispatcher("/WEB-INF/view/"+jsp+".jsp").forward(req, res);
     }
 }

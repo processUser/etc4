@@ -139,4 +139,9 @@ window.onload = () =>{
         //console.log('document.cookie : ' + document.cookie) // ajax에서는 안됨.
     }
 
+    const changeLogin = () => {
+        const gnbChildren = document.querySelector('.gnb > ul');
+        console.log(gnbChildren)
+    }
+
 }

@@ -2,6 +2,7 @@ package org.iptime.mpage.servlet.user.my;
 
 import com.google.gson.Gson;
 import org.iptime.mpage.DAO.AddrDAO;
+import org.iptime.mpage.DAO.UserDAO;
 import org.iptime.mpage.Utils;
 import org.iptime.mpage.model.user.AddrDto;
 import org.iptime.mpage.model.user.UserResult;
@@ -29,11 +30,11 @@ public class MyinfoAddrinfoUpdServlet extends HttpServlet {
         Gson gosn = new Gson();
         AddrDto dto = gosn.fromJson(json, AddrDto.class);
         dto.setUserpk(Utils.getLoginUserPk(req));
+        System.out.println(dto);
 
         UserResult ur = new UserResult();
         ur.setResult(AddrDAO.updAddr(dto));
-
-
+        System.out.println(AddrDAO.updAddr(dto));
         res.setContentType("text/plain;charset=UTF-8");
         res.setCharacterEncoding("UTF-8");
 

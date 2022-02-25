@@ -58,7 +58,7 @@ public class PwChangeServlet extends HttpServlet {
             dto.setEmail(userVo.getEmail());
             String pw = BCrypt.hashpw(dto.getPw(), BCrypt.gensalt());
             dto.setPw(pw);
-            ur.setResult(UserDAO.updUser(dto));
+            ur.setResult(UserDAO.updUserPw(dto));
         } else {
             ur.setResult(0);
         }

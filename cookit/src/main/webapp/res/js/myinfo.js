@@ -1,7 +1,6 @@
 {
     const view_warp = document.querySelector('.myinfo_view_warp');
     const myinfo_category_list = document.querySelectorAll('.myinfo_category_list ul li');
-    console.log(myinfo_category_list)
 
     const urllist =[
         // '/my/like',
@@ -39,7 +38,6 @@
            fetch( urllist[i])
                .then(res => res.text())
                .then(data =>{
-                   console.log(urllist[i])
                    if(urllist[i] === '/my/userinfo'){
                        myinfo_view();
                    }
@@ -49,7 +47,6 @@
                        check_pw();
                        pwbutton();
                    }
-
                }).catch(err =>{
                   console.log(err)
                });
@@ -84,10 +81,10 @@
         }).then(res =>{
             return res.json();
         } ).then(data => {
-            console.log(data)
-            setMyinfoValue(data.userinfo);
-            setaddrValue(data.addrinfo);
+            setMyinfoValue(data.userinfo); // 내 정보
+            setaddrValue(data.addrinfo);  //배송지 정보
             myinfo_click()
+            addrSearch()
         }).catch(e => {
             console.log(e);
         });
@@ -100,7 +97,6 @@
         const gender = document.querySelector('.gender');
         const birthdaymm = document.querySelector('.birthdaymm');
         const birthdaydd = document.querySelector('.birthdaydd');
-        console.log(email)
         email.value = data.email;
         nm.value = data.nm;
         for(var i=0; i<gender.length; i++){
@@ -112,8 +108,8 @@
         birthdaydd.value = data.birthdaydd;
     }
 
+    // 배송지 정보 받아와서 뿌리기
     const setaddrValue = (data) => {
-        console.log(document.querySelectorAll('.cart_list')[1])
         const secListElem =  document.querySelectorAll('.cart_list')[1];
         secListElem.innerHTML='';
         data.forEach((item) => {
@@ -141,11 +137,9 @@
                     <span>이름</span><input type="text" class="addrnm" value="${item.addrnm}" name="addrnm">
                 </div>
             `;
-
             if(`${item.addrdefault}`=== '0'){
                 const addrdefaultElem = document.querySelector('.addrdefault');
                 addrdefaultElem.checked = true;
-                console.log(addrdefaultElem.checked);
             }
 
             divElem1.classList.add('deladdr');
@@ -163,7 +157,7 @@
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        //console.log(data);
                     }).catch(err => {
                         console.log(err);
                 })
@@ -171,6 +165,7 @@
             divElem2.classList.add('info_button');
             divElem2.innerText='정보수정';
             addrWarpElem.appendChild(divElem2);
+
             divElem2.addEventListener('click', () =>{
                 const addrdefaultElem = document.querySelector('.addrdefault');
                 let addrdefault=1;
@@ -184,6 +179,7 @@
                 const detailedaddrValue = document.querySelector('.detailedaddr');
                 const addrtelValue = document.querySelector('.addrtel');
                 const addrnmValue = document.querySelector('.addrnm');
+
                 fetch('/my/addrinfo/upd',{
                     'method': 'post',
                     'headers': {'Content-Type': 'application/json'},
@@ -198,7 +194,6 @@
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         if(data.result){
                             location.href = location.href;
                         }else {
@@ -206,11 +201,12 @@
                         }
                     }).catch(err => {
                     console.log(err);
-                })
+                });
             });
         }); //for 문종료
-
     }
+
+
     // 회원정보 배송지 선택 버튼
     const myinfo_click = () => {
         const cart_check_click = document.querySelector('.cart_check');
@@ -229,7 +225,7 @@
             const cart_list = document.querySelectorAll('.cart_list');
             cart_list[0].classList.add('display_none');
             cart_list[1].classList.remove('display_none');
-            addrSearch()
+
 
         })
     }
@@ -237,30 +233,38 @@
     //배송지 검색 이벤트
     const addrSearch = () => {
         // 배송지검색
-        const addrElem = document.querySelector('.addr');
-        // addrElem.style.cursor= 'pointer';
-        addrElem.addEventListener('click', ()=>{
-            console.log(addrElem);
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    //data는 사용자가 선택한 주소 정보를 담고 있는 객체이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
-                    if(data.sido !== '서울' || data.sidoEnglish !== 'Seoul' ){
-                        alert('배송불가 지역입니다.');
-                    }else{
-                        console.log(data);
-                        const detailedaddrElem = document.querySelector('.detailedaddr');
-                        addrElem.value = data.address;
-                        detailedaddrElem.focus()
+        const addrElem = document.querySelectorAll('.addr');
+        const detailedaddrElem = document.querySelectorAll('.detailedaddr');
+        for(let i = 0; i < addrElem.length; i++){
+            // console.log(addrElem[i]);
+            // console.log(detailedaddrElem[i]);
+            // addrElem.style.cursor= 'pointer';
+            addrElem[i].addEventListener('click', ()=>{
+                // console.log(addrElem[i]);
+                addrElem[i].value='';
+                detailedaddrElem[i].value='';
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        //data는 사용자가 선택한 주소 정보를 담고 있는 객체이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+                        if(data.sido !== '서울' || data.sidoEnglish !== 'Seoul' ){
+                            alert('배송불가 지역입니다.');
+                        }else{
+                            // console.log(data);
+                            addrElem[i].value = data.address;
+
+                            detailedaddrElem[i].focus()
+                        }
                     }
-                }
-            }).open();
-        });
+                }).open();
+            });
+        }
+
     }
 
     // 현재 비밀번호 확인
     const pwbutton = () => {
         const change_buttonElem = document.querySelector('.change_button');
-        console.log(change_buttonElem);
+        // console.log(change_buttonElem);
         change_buttonElem.addEventListener('click',()=>{
             const beforepw = document.querySelector('.beforepw').value;
             const pw = document.querySelector('.upw').value;
@@ -276,7 +280,7 @@
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    //console.log(data);
                     
                 }).catch(err => {
                 console.log(err);

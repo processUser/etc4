@@ -126,27 +126,33 @@ function sendToken() {
 //             });
 //         }
 //     }, 1000);
-    let values = [];
-    const setCookie = (name, value) => {
-        let getcookie = getCookie(name);
+let values = [];
+const setCookie = (name, value) => {
+    let getcookie = getCookie(name);
 
-        if(getcookie){
-            // values += value;
-            values.push(encodeURIComponent(value));
-        } else {
-            // values = value;
-            values.push(encodeURIComponent(value));
-        }
-        document.cookie = name + '=' + values + ';path=/';
-
-        let aaa = decodeURIComponent(escape(getcookie))
-        // console.log(decodeURIComponent(escape(getcookie)));
-        // console.log();
-        let bbb = aaa.replaceAll('},{', '} . {');
-        let ccc = bbb.split(' . ');
-        console.log(ccc[0]);
-        console.log(ccc[1]);
-        console.log(bbb);
-        console.log(JSON.parse(ccc[0]));
-        console.log(values);
+    if(getcookie){
+        // values += value;
+        values.push(encodeURIComponent(value));
+    } else {
+        // values = value;
+        values.push(encodeURIComponent(value));
     }
+    document.cookie = name + '=' + values + ';path=/';
+
+    let aaa = decodeURIComponent(escape(getcookie))
+    // console.log(decodeURIComponent(escape(getcookie)));
+    // console.log();
+    let bbb = aaa.replaceAll('},{', '} . {');
+    let ccc = bbb.split(' . ');
+    console.log(ccc[0]);
+    console.log(ccc[1]);
+    console.log(bbb);
+    console.log(JSON.parse(ccc[0]));
+    console.log(values);
+}
+const LoginChange = () => {
+    const token = request.getCookies();
+    console.log(token)
+}
+LoginChange()
+

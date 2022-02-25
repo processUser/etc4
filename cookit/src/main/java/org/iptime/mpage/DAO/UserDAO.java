@@ -183,8 +183,11 @@ public class UserDAO {
         }
         return 0;
     }
+    public static int updUserInfo(UserDTO dto){
+        return 0;
+    }
 
-    public static int updUser(UserDTO dto){
+    public static int updUserPw(UserDTO dto){
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
