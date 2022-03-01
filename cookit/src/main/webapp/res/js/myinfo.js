@@ -121,26 +121,29 @@
             let divElem2 = document.createElement('div');
             let divElem3 = document.createElement('div');
 
-            addrWarpElem.innerHTML = `
-                <div>
-                    <label><input type="checkbox" class="addrdefault">기본배송지</label>
-                </div>
-                <div class="addrsearch">
-                    <span>주소</span>
-                    <input type="text" class="addr" name="addr" value="${item.addr}">
-                    <input type="text" class="detailedaddr" value="${item.detailedaddr}" name="detailedaddr" placeholder="상세주소">
-                </div>
-                <div>
-                    <span>연락처</span><input type="text" value="${item.addrtel}" class="addrtel" name="addrtel">
-                </div>
-                <div>
-                    <span>이름</span><input type="text" class="addrnm" value="${item.addrnm}" name="addrnm">
-                </div>
-            `;
-            if(`${item.addrdefault}`=== '0'){
-                const addrdefaultElem = document.querySelector('.addrdefault');
-                addrdefaultElem.checked = true;
-            }
+            divElem2.classList.add('addrsearch')
+            divElem2.innerText = `${item.addr}`;
+            addrWarpElem.appendChild(divElem2);
+            // addrWarpElem.innerHTML = `
+            //     <div>
+            //         <label><input type="checkbox" class="addrdefault">기본배송지</label>
+            //     </div>
+            //     <div class="addrsearch">
+            //         <span>주소</span>
+            //         <input type="text" class="addr" name="addr" value="${item.addr}">
+            //         <input type="text" class="detailedaddr" value="${item.detailedaddr}" name="detailedaddr" placeholder="상세주소">
+            //     </div>
+            //     <div>
+            //         <span>연락처</span><input type="text" value="${item.addrtel}" class="addrtel" name="addrtel">
+            //     </div>
+            //     <div>
+            //         <span>이름</span><input type="text" class="addrnm" value="${item.addrnm}" name="addrnm">
+            //     </div>
+            // `;
+            // if(`${item.addrdefault}`=== '0'){
+            //     const addrdefaultElem = document.querySelector('.addrdefault');
+            //     addrdefaultElem.checked = true;
+            // }
 
             divElem1.classList.add('deladdr');
             divElem1.innerText='삭제';
@@ -157,52 +160,52 @@
                 })
                     .then(res => res.json())
                     .then(data => {
-                        //console.log(data);
+                        console.log(data);
                     }).catch(err => {
                         console.log(err);
                 })
             });
-            divElem2.classList.add('info_button');
-            divElem2.innerText='정보수정';
-            addrWarpElem.appendChild(divElem2);
-
-            divElem2.addEventListener('click', () =>{
-                const addrdefaultElem = document.querySelector('.addrdefault');
-                let addrdefault=1;
-                if(addrdefaultElem.checked){
-                    addrdefault = 0;
-                } else {
-                    addrdefault = 1;
-                }
-
-                const addrValue = document.querySelector('.addr');
-                const detailedaddrValue = document.querySelector('.detailedaddr');
-                const addrtelValue = document.querySelector('.addrtel');
-                const addrnmValue = document.querySelector('.addrnm');
-
-                fetch('/my/addrinfo/upd',{
-                    'method': 'post',
-                    'headers': {'Content-Type': 'application/json'},
-                    'body': JSON.stringify({
-                        'addresspk': `${item.addresspk}`,
-                        'addr': addrValue.value,
-                        'detailedaddr': detailedaddrValue.value,
-                        'addrtel': addrtelValue.value,
-                        'addrnm': addrnmValue.value,
-                        'addrdefault': addrdefault
-                    })
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if(data.result){
-                            location.href = location.href;
-                        }else {
-                            alert('수정 실패!')
-                        }
-                    }).catch(err => {
-                    console.log(err);
-                });
-            });
+            // divElem2.classList.add('info_button');
+            // divElem2.innerText='정보수정';
+            // addrWarpElem.appendChild(divElem2);
+            //
+            // divElem2.addEventListener('click', () =>{
+            //     const addrdefaultElem = document.querySelector('.addrdefault');
+            //     let addrdefault=1;
+            //     if(addrdefaultElem.checked){
+            //         addrdefault = 0;
+            //     } else {
+            //         addrdefault = 1;
+            //     }
+            //
+            //     const addrValue = document.querySelector('.addr');
+            //     const detailedaddrValue = document.querySelector('.detailedaddr');
+            //     const addrtelValue = document.querySelector('.addrtel');
+            //     const addrnmValue = document.querySelector('.addrnm');
+            //
+            //     fetch('/my/addrinfo/upd',{
+            //         'method': 'post',
+            //         'headers': {'Content-Type': 'application/json'},
+            //         'body': JSON.stringify({
+            //             'addresspk': `${item.addresspk}`,
+            //             'addr': addrValue.value,
+            //             'detailedaddr': detailedaddrValue.value,
+            //             'addrtel': addrtelValue.value,
+            //             'addrnm': addrnmValue.value,
+            //             'addrdefault': addrdefault
+            //         })
+            //     })
+            //         .then(res => res.json())
+            //         .then(data => {
+            //             if(data.result){
+            //                 location.href = location.href;
+            //             }else {
+            //                 alert('수정 실패!')
+            //             }
+            //         }).catch(err => {
+            //         console.log(err);
+            //     });
+            // });
         }); //for 문종료
     }
 
