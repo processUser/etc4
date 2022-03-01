@@ -15,18 +15,5 @@ window.onload = () => {
         section3[i].style.width = (section3[i].children.length * (section3[i].children.item(0)).offsetWidth)+'px'
     }
 
-    //left 슬라이드
-    const leftslide = () =>{
-        let ulElem = document.querySelector('.slide')
-        let firstliElem = ul.children[0];
 
-        ulElem.addEventListener('animationend', () => {
-            ulElem.append(firstliElem)
-            ulElem.classList.remove('leftslidein')
-            ulElem.offsetWidth
-        });
-        ulElem.classList.add('leftslidein');
-    }
-    // setInterval(sli(), 5000)
-    setInterval(leftslide, 3800)
 }
