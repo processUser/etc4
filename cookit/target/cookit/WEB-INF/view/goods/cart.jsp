@@ -68,11 +68,11 @@
                     <div class="line">선택삭제</div>
                 </div>
                 <div class="cart_list border_blue">
-                    <ul>
+                    <ul class="carts_list">
                         <li>
                             <div><input type="checkbox"></div>
                             <div class="cart_list_img">
-                                <img src="http://placehold.it/132x132" alt="상품이미지">
+                                <img src="http://via.placeholder.com/132x132" alt="상품이미지">
                             </div>
                             <div class="cart_list_gnm">상품명</div>
                             <div class="cart_list_quantity">
@@ -84,7 +84,7 @@
                         <li>
                             <div><input type="checkbox"></div>
                             <div class="cart_list_img">
-                                <img src="http://placehold.it/132x132" alt="상품이미지">
+                                <img src="http://via.placeholder.com/132x132" alt="상품이미지">
                             </div>
                             <div class="cart_list_gnm">상품명</div>
                             <div class="cart_list_quantity">
@@ -101,7 +101,7 @@
                     <div class="product_amount">상품금액 <span>19,900</span></div>
                     <div class="delivery_fee">배송비 <span>3,100</span></div>
                     <div class="expected_payment_amount">결제예정금액 <span>23,000</span></div>
-                    <div>주문하기</div>
+                    <div class="make_payment">결제하기</div>
                 </div>
             </article>
         </div>
@@ -179,6 +179,7 @@
             </ul>
         </div>
     </footer>
-
+    <script src="/res/js/comm.js"></script>
+    <script src="/res/js/cart.js"></script>
 </body>
 </html>

@@ -1,3 +1,11 @@
+CREATE TABLE cookit_payment{
+	paymentpk VARCHAR(24) PRIMARY KEY,
+	userpk INT UNSIGNED,
+	addresspk
+}
+-- 결제정보 담을 테이블 생성하기... 아래있는 테이블 수정 필!!
+
+
 -- 사용자 테이블 
 /*
    회원정보 Db
