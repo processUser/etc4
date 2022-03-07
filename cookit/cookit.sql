@@ -1,9 +1,38 @@
-CREATE TABLE cookit_payment{
-	paymentpk VARCHAR(24) PRIMARY KEY,
-	userpk INT UNSIGNED,
-	addresspk
-}
+-- 결제 테이블
+/*
+	결제 정보 DB
+	paymentpk - 결제 pk
+	merchant_uid - 상점 거래ID
+	userpk - 회원 pk
+	addresspk - 주소 pk
+	amount - 총 결제 금액
+
+	rdt - 결제일
+*/
+CREATE TABLE cookit_payment(
+	paymentpk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	merchant_uid VARCHAR(25) UNIQUE,
+	userpk INT UNSIGNED NOT NULL,
+	addresspk INT UNSIGNED NOT NULL,
+	amount int UNSIGNED NOT NULL,
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 -- 결제정보 담을 테이블 생성하기... 아래있는 테이블 수정 필!!
+-- 결제 테이블
+/*
+	결제 상품 DB
+	purchasepk - 결제 pk 
+	userpk - 회원 pk
+	goodspk - 상품 pk
+	rdt - 결제일
+*/
+CREATE TABLE cookit_payment_goods(
+	paygoodspk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	paymentpk INT UNSIGNED NOT NULL, 
+	goodspk INT UNSIGNED NOT NULL, 
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 
 -- 사용자 테이블 
@@ -79,20 +108,6 @@ CREATE TABLE cookit_shipping_address(
 	addrtel VARCHAR(16) not null,
 	addrdefault TINYINT UNSIGNED NOT NULL,
 	userpk INT UNSIGNED NOT NULL
-);
--- 결제 테이블
-/*
-	결제 Db payment
-	purchasepk - 결제 pk 
-	userpk - 회원 pk
-	goodspk - 상품 pk
-	rdt - 결제일
-*/
-CREATE TABLE cookit_purchase(
-	purchasepk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-	goodspk INT UNSIGNED NOT NULL, 
-	userpk INT UNSIGNED NOT NULL, 
-	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- 리뷰 테이블

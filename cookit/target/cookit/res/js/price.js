@@ -17,18 +17,29 @@
     });
 
     const price = localStorage.getItem('price');
-
+    let addrpk;
+    let addrnm;
+    let addrs;
+    let detailedaddr;
+    let addrtel;
     const make_view = (data) => {
         const price_warp = document.querySelector('.price_warp');
         const addrList = data.addrinfo;
         addrList.forEach(addr => {
             if(addr.addrdefault === 0){
+
+                addrpk = addr.addresspk;
+                addrnm = addr.addrnm;
+                addrs = addr.addr;
+                detailedaddr = addr.detailedaddr;
+                addrtel = addr.addrtel;
+
                 price_warp.innerHTML=`
                 <div>배송지</div>
-                <div><input type="text" value="${addr.addr}"></div>
-                <div><input type="text" value="${addr.detailedaddr}"></div>
-                <div><input type="text" value="${addr.addrnm}"></div>
-                <div><input type="text" value="${addr.addrtel}"></div>
+                <div><input type="text" value="${addrs}"></div>
+                <div><input type="text" value="${detailedaddr}"></div>
+                <div><input type="text" value="${addrnm}"></div>
+                <div><input type="text" value="${addrtel}"></div>
                 <div>결제금액</div>
                 <div>${Number(price).toLocaleString()}</div>
                 <div class="kakaoPay">kakao pay 결제</div>
@@ -44,30 +55,30 @@
         const IMP = window.IMP; // 생략 가능
         IMP.init("imp78003467"); // Example: imp00000000 // 가맹점 식별 코드
 
-        function requestPay() {
+        function requestPay(item) {
             // IMP.request_pay(param, callback) 결제창 호출
             IMP.request_pay({ // param
                 pg: "kakaoPay",
                 pay_method: "card",
-                merchant_uid: "ORD20180131-0000012",
+                merchant_uid: item,
                 name: "cookit 포폴 상품 결제",
                 amount: price,
                 buyer_email: userdata.email,
                 buyer_name: addrdata.addrnm ,
                 buyer_tel: addrdata.addrtel ,
-                buyer_addr: addrdata.addr + ' ' + addrdata.detailedaddr,
+                buyer_addr: `${addrdata.addr + addrdata.detailedaddr}`
                 // buyer_postcode: "01181"
             }, function (rsp) { // callback
                 if (rsp.success) {
                     // 결제 성공 시 로직,
                     jQuery.ajax({
-                        url: "{서버의 결제 정보를 받는 endpoint}", // 예: https://www.myservice.com/payments/complete
+                        url: "/price", // 예: https://www.myservice.com/payments/complete
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        data: {
+                        data: JSON.stringify({
                             imp_uid: rsp.imp_uid,
                             merchant_uid: rsp.merchant_uid
-                        }
+                        })
                     }).done(function (data) {
                         // 가맹점 서버 결제 API 성공시 로직
                     })
@@ -77,19 +88,43 @@
                 }
             });
         }
+        let goodspkList = [];
+        const getGoodspk = () => {
+            let carts = decodeURIComponent(escape(getCookie(`carts`))).replaceAll('},{', '} . {');
+            let arrcart = carts.split(' . ')
+            console.log(arrcart)
+
+            arrcart.forEach(cart =>{
+                let jsoncart = JSON.parse(cart);
+                goodspkList.push(jsoncart.gnum);
+
+            });
+            console.log(goodspkList);
+        }
 
         let kakaoPay = document.querySelector('.kakaoPay');
         kakaoPay.addEventListener('click', () => {
-            fetch('/price',{
+            getGoodspk();
+            console.log(JSON.stringify({
+                addresspk: addrpk,
+                amount: Number(price),
+                goodspkList: goodspkList
+            }));
+            // merchant_uid 미리 만들기.
+            fetch('/price/ins',{
                 'method': 'post',
                 'headers': {'Content-Type': 'application/json'},
                 'body': JSON.stringify({
-                    'userpk': 0
+                    addresspk: addrpk,
+                    amount: price,
+                    goodspkList: goodspkList
                 })
             })
-
-            requestPay()
-
+                .then(res => res.text())
+                .then(data => {
+                    console.log(data);
+                    // requestPay(data)
+                })
         });
     }
 }

@@ -23,6 +23,7 @@
 </head>
 <body>
     <div class="price_warp"></div>
+    <script src="/res/js/comm.js"></script>
     <script src="/res/js/price.js"></script>
 </body>
 </html>
