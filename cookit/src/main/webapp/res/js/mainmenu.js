@@ -88,6 +88,7 @@
             pElem2.appendChild(aElem);
 
             const param = JSON.stringify({
+                'goodspk': `${item.goodspk}`,
                 'gnum': `${item.gnum}`,
                 'gnm': `${item.gnm}`,
                 'price': `${item.price}`
@@ -143,6 +144,7 @@
             dlElem.appendChild(ddElem);
             bottom_menu_list.appendChild(dlElem);
             const param = JSON.stringify({
+                'goodspk': `${item.goodspk}`,
                 'gnum': `${item.gnum}`,
                 'gnm': `${item.gnm}`,
                 'price': `${item.price}`

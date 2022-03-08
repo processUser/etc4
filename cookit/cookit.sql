@@ -6,7 +6,8 @@
 	userpk - 회원 pk
 	addresspk - 주소 pk
 	amount - 총 결제 금액
-
+	pg_provider - 결제 수단
+	pg_tid - PG승인번호
 	rdt - 결제일
 */
 CREATE TABLE cookit_payment(
@@ -15,6 +16,9 @@ CREATE TABLE cookit_payment(
 	userpk INT UNSIGNED NOT NULL,
 	addresspk INT UNSIGNED NOT NULL,
 	amount int UNSIGNED NOT NULL,
+	imp_uid VARCHAR(30) NOT NULL,
+	pg_provider VARCHAR(10) NOT NULL,
+	pg_tid VARCHAR(30) NOT NULL,
 	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

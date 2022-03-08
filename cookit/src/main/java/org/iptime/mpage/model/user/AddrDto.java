@@ -7,6 +7,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class AddrDto extends AddrEntity {
-
+public class AddrDto{
+    private int addresspk;
+    private String addrnm;
+    private String addr;
+    private String detailedaddr;
+    private String addrtel;
+    private int addrdefault;
+    private int userpk;
 }

@@ -14,6 +14,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddrDAO { // 주소 DB조회
+    public static int insAddr(AddrDto dto) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "INSERT INTO cookit_shipping_address (`addrnm`, `addr`, `detailedaddr`, `addrtel`, `addrdefault`, `userpk`) " +
+                " VALUES (?, ?, ?, ?, ?, ?);";
+
+        try {
+            con = DbUtils.getCon();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dto.getAddrnm());
+            ps.setString(2, dto.getAddr());
+            ps.setString(3, dto.getDetailedaddr());
+            ps.setString(4, dto.getAddrtel());
+            ps.setInt(5, dto.getAddrdefault());
+            ps.setInt(6, dto.getUserpk());
+
+            return ps.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            DbUtils.close(con, ps);
+        }
+        return 0;
+    }
+
+
     //사용자 배송지 전체 조회
     public static List<AddrVo> seladdr(UserDTO dto) {
         List<AddrVo> list = new ArrayList<>();
@@ -67,6 +93,26 @@ public class AddrDAO { // 주소 DB조회
             ps.setInt(5, dto.getAddrdefault());
             ps.setInt(6, dto.getUserpk());
             ps.setInt(7, dto.getAddresspk());
+
+            return ps.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            DbUtils.close(con, ps);
+        }
+        return 0;
+    }
+
+    // 기본 배송지 설정
+    public static int updDefault(AddrDto dto) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "UPDATE cookit_shipping_address SET addrdefault = 1 WHERE userpk = ?";
+
+        try {
+            con = DbUtils.getCon();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, dto.getUserpk());
 
             return ps.executeUpdate();
         }catch (Exception e){

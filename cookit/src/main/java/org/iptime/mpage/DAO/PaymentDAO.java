@@ -13,8 +13,8 @@ public class PaymentDAO {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "INSERT INTO cookit_payment(merchant_uid, userpk, addresspk, amount) " +
-                "VALUES(?, ?, ?, ?);";
+        String sql = "INSERT INTO cookit_payment(merchant_uid, userpk, addresspk, amount, pg_provider, pg_tid, imp_uid) " +
+                "VALUES(?, ?, ?, ?,'', '','');";
 
         try {
             con = DbUtils.getCon();
@@ -37,15 +37,17 @@ public class PaymentDAO {
         return 0;
     }
 
-    public static int insGoodsList(PaymentDto dto) {
+    public static int insGoodsList(int pk1, int pk2) {
         Connection con = null;
         PreparedStatement ps = null;
-        String sql = "";
+        String sql = "INSERT INTO cookit_payment_goods(paymentpk, goodspk) " +
+                "VALUES ( ?, ?);";
 
         try {
             con = DbUtils.getCon();
             ps = con.prepareStatement(sql);
-
+            ps.setInt(1, pk1);
+            ps.setInt(2, pk2);
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,5 +77,28 @@ public class PaymentDAO {
             DbUtils.close(con,ps);
         }
         return null;
+    }
+
+    public static int updPayment(PaymentDto dto) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String sql = "UPDATE cookit_payment SET imp_uid =?, pg_provider = ?, pg_tid=? WHERE paymentpk = ?;";
+
+        try {
+            con = DbUtils.getCon();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, dto.getImp_uid());
+            ps.setString(2, dto.getPg_provider());
+            ps.setString(3, dto.getPg_tid());
+            ps.setInt(4, dto.getPaymentpk());
+            return ps.executeUpdate();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            DbUtils.close(con,ps);
+        }
+        return 0;
     }
 }

@@ -20,9 +20,23 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </head>
 <body>
+    <div>
+        <h1>결제</h1>
+    </div>
+    <div class="goods_warp"></div>
+    <div><span>배송비</span><span class="price"></span></div>
+    <div>
+        <div>기본배송지</div>
+        <div>신규배송지</div>
+        <div>배송지목록</div>
+    </div>
     <div class="price_warp"></div>
+    <div class="pay_warp"></div>
+
     <script src="/res/js/comm.js"></script>
     <script src="/res/js/price.js"></script>
 </body>
