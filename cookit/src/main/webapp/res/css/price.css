@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+.clear_both{
+    clear: both;
+}
+.align_right{
+    text-align: right;
+}
+.border_grey{
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+.padding_10{
+    padding: 10px;
+}
+.padding_t10{
+    padding-top: 10px;
+}
+.padding_l10{
+    padding-left: 10px;
+}
+.padding_r20{
+    padding-right: 20px;
+}
+.margin_t20{
+    margin-top: 20px;
+}
+.margin_b20{
+    margin-bottom: 20px;
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.warp{
+    width: 650px;
+    padding: 0 15px;
+    border: 1px solid blue;
+}
+.price_header{
+    height: 100px;
+    line-height: 100px;
+}
+.price_header > h1{
+    text-align: center;
+    font-size: 65px;
+}
+.goods_warp{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.price_list_img{
+    float: left;
+}
+
+.price_category_list{
+    display: flex;
+}
+.line::before {
+    background-color: black;
+}
+

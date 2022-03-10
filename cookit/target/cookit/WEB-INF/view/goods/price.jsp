@@ -24,18 +24,23 @@
 
 </head>
 <body>
-    <div>
-        <h1>결제</h1>
+    <div class="warp">
+        <header class="price_header margin_t20 margin_b20">
+            <h1>결제 정보</h1>
+        </header>
+        <div class="goods_warp border_grey padding_10"></div>
+        <div class="clear_both align_right border_grey padding_r20 margin_t20 margin_b20"><span>배송비 </span><span class="price"></span></div>
+
+        <div class="price_category_list">
+            <div>기본배송지</div>
+            <div class="line">신규배송지</div>
+            <div class="line">배송지목록</div>
+        </div>
+        <div class="price_warp"></div>
+
+        <div class="pay_warp"></div>
     </div>
-    <div class="goods_warp"></div>
-    <div><span>배송비</span><span class="price"></span></div>
-    <div>
-        <div>기본배송지</div>
-        <div>신규배송지</div>
-        <div>배송지목록</div>
-    </div>
-    <div class="price_warp"></div>
-    <div class="pay_warp"></div>
+
 
     <script src="/res/js/comm.js"></script>
     <script src="/res/js/price.js"></script>

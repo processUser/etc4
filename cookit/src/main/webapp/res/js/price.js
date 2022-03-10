@@ -14,15 +14,17 @@
 
             console.log(jsoncart)
             const divElem = document.createElement('div');
+            divElem.classList.add('clear_both')
             divElem.innerHTML =`
-                <div class="cart_list_gnm" data-gnum="${jsoncart.gnum}">${jsoncart.gnm}</div>
-                <div class="cart_list_img">
+                <div class="price_list_img">
                     <img src="http://via.placeholder.com/80x80" alt="상품이미지">
                 </div>
+                <div class="price_list_gnm" data-gnum="${jsoncart.gnum}">${jsoncart.gnm}</div>
+                
                 <span>
-                    <span class="cart_list_pri">${Number(jsoncart.price).toLocaleString()}</span>
+                    <span class="price_list_pri">${Number(jsoncart.price).toLocaleString()}</span>
                     &#92;
-                    <span class="cart_list_quant">01</span>
+                    <span class="price_list_quant">01 개</span>
                 </div>
             `;
             goods_warp.appendChild(divElem);
@@ -73,11 +75,10 @@
                     addrtel = addr.addrtel;
 
                     price_warp.innerHTML=`
-                        <div>기본배송지</div>
-                        <div><input type="text" value="${addrnm}"></div>
-                        <div><input type="text" value="${addrs}"></div>
-                        <div><input type="text" value="${detailedaddr}"></div>
-                        <div><input type="text" value="${addrtel}"></div>
+                        <div>${addrnm}</div>
+                        <div>${addrs}</div>
+                        <div>${detailedaddr}</div>
+                        <div>${addrtel}</div>
                     `;
                 }
             });
@@ -212,7 +213,7 @@
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    // requestPay(data)
+                    requestPay(data)
                 })
         });
     }

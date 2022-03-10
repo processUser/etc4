@@ -1,0 +1,104 @@
+CREATE TABLE cookit_provider(
+	providerpk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	nm VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE cookit_user(
+   userpk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+   email VARCHAR(50) UNIQUE NOT NULL,
+   pw VARCHAR(500) NOT NULL DEFAULT '',
+   nm VARCHAR(10) NOT NULL,
+   gender TINYINT UNSIGNED NOT NULL CHECK(gender IN (1, 2, 3)),
+   birthdaymm VARCHAR(2) NOT NULL DEFAULT 00 CHECK(birthdaymm >= 00 AND birthdaymm <= 09),
+   birthdaydd VARCHAR(2) NOT NULL DEFAULT 00 CHECK(birthdaydd >= 00 AND birthdaydd <= 31),
+   rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+   ldt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+   joinpath INT UNSIGNED NOT NULL,
+   deluser TINYINT UNSIGNED NOT NULL DEFAULT 0 CHECK(deluser >= 0 AND deluser <= 1),
+   ukey VARCHAR(50) UNIQUE NOT NULL DEFAULT '',
+   FOREIGN KEY(joinpath) REFERENCES cookit_provider(providerpk)
+);
+
+CREATE TABLE cookit_agree(
+	agreepk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	userpk INT UNSIGNED NOT NULL,
+	termsOfUse TINYINT UNSIGNED NOT NULL CHECK(termsOfUse IN(0,1)),
+	userInformation TINYINT UNSIGNED NOT NULL CHECK(userInformation IN(0,1)),
+	marketing TINYINT UNSIGNED NOT NULL DEFAULT 0 CHECK(marketing IN(0,1)),
+	notRealpage TINYINT UNSIGNED NOT NULL CHECK(notRealpage IN(0,1)),
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY(userpk) REFERENCES cookit_user(userpk)
+);
+
+CREATE TABLE cookit_goods_category(
+	categorypk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	categorynm VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE cookit_goods(
+	goodspk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	gnum VARCHAR(8) UNIQUE NOT NULL,
+	categorypk INT UNSIGNED,
+	gnm VARCHAR(50) NOT NULL,
+	price INT UNSIGNED NOT NULL DEFAULT 0,
+	quantity TINYINT UNSIGNED NOT NULL DEFAULT 0,
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+	isdel TINYINT UNSIGNED DEFAULT 0,
+	FOREIGN KEY(categorypk) REFERENCES cookit_goods_category(categorypk)
+);
+
+CREATE TABLE cookit_goods_image (
+	imgpk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	goodspk INT UNSIGNED NOT NULL,
+	img VARCHAR(50),
+	defaultimage TINYINT UNSIGNED,
+	FOREIGN KEY(goodspk) REFERENCES cookit_goods(goodspk)
+);
+
+CREATE TABLE cookit_review(
+	reviewpk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	goodspk INT UNSIGNED NOT NULL, 
+	userpk INT UNSIGNED NOT NULL, 
+	revscore TINYINT UNSIGNED NOT NULL DEFAULT 0 CHECK(revscore >=0 AND revscore<=5),
+	revctnt VARCHAR(1000) NOT NULL DEFAULT '',
+	revimg VARCHAR(10) NOT NULL DEFAULT '',
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	mdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	isdel TINYINT UNSIGNED NOT NULL DEFAULT 0,
+	FOREIGN KEY(userpk) REFERENCES cookit_user(userpk),
+	FOREIGN KEY(goodspk) REFERENCES cookit_goods(goodspk)
+);
+
+CREATE TABLE cookit_shipping_address(
+	addresspk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	addrnm VARCHAR(5) not null,
+	addr VARCHAR(100) not null,
+	detailedaddr VARCHAR(50) not null,
+	addrtel VARCHAR(16) not null,
+	addrdefault TINYINT UNSIGNED NOT NULL,
+	userpk INT UNSIGNED NOT NULL,
+	FOREIGN KEY(userpk) REFERENCES cookit_user(userpk)
+);
+
+CREATE TABLE cookit_payment(
+	paymentpk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	merchant_uid VARCHAR(25) UNIQUE,
+	userpk INT UNSIGNED NOT NULL,
+	addresspk INT UNSIGNED NOT NULL,
+	amount int UNSIGNED NOT NULL,
+	imp_uid VARCHAR(30) NOT NULL,
+	pg_provider VARCHAR(10) NOT NULL,
+	pg_tid VARCHAR(30) NOT NULL,
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY(userpk) REFERENCES cookit_user(userpk),
+	FOREIGN KEY(addresspk) REFERENCES cookit_shipping_address(addresspk)
+);
+
+CREATE TABLE cookit_payment_goods(
+	paygoodspk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	paymentpk INT UNSIGNED NOT NULL, 
+	goodspk INT UNSIGNED NOT NULL, 
+	rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY(paymentpk) REFERENCES cookit_payment(paymentpk),
+	FOREIGN KEY(goodspk) REFERENCES cookit_goods(goodspk)
+);

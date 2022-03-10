@@ -27,7 +27,7 @@ CREATE TABLE cookit_payment(
 /*
 	결제 상품 DB
 	purchasepk - 결제 pk 
-	userpk - 회원 pk
+	paymentpk - 결제정보 pk
 	goodspk - 상품 pk
 	rdt - 결제일
 */
@@ -52,21 +52,21 @@ CREATE TABLE cookit_payment_goods(
    rdt - 가입일
    ldt - 마지막 로그인 일
    joinpath - 회원가입 경로 0- 관리자 but 0 설정 막기,  1- 홈페이지, 2- 네이버, etc
-              지정 경로 이외의 값 ex) 0 이 넘어오면 가입 거절
+              지정 경로 이외의 값 ex) 0 이 넘어오면 가입 거절 //
    deluser - 삭제여부 정상유지- 0, 삭제- 1 
    ukey - 
 */
 CREATE TABLE cookit_user(
    userpk INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
    email VARCHAR(50) UNIQUE NOT NULL,
-   pw VARCHAR(500) NOT NULL,
-   nm VARCHAR(5) NOT NULL,
+   pw VARCHAR(500) NOT NULL DEFAULT '',
+   nm VARCHAR(10) NOT NULL,
    gender TINYINT UNSIGNED NOT NULL CHECK(gender IN (1, 2, 3)),
    birthdaymm VARCHAR(2) NOT NULL DEFAULT 00 CHECK(birthdaymm >= 00 AND birthdaymm <= 09),
    birthdaydd VARCHAR(2) NOT NULL DEFAULT 00 CHECK(birthdaydd >= 00 AND birthdaydd <= 31),
    rdt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
    ldt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
-   joinpath TINYINT UNSIGNED NOT NULL CHECK(joinpath >= 0),
+   joinpath TINYINT UNSIGNED NOT NULL,
    deluser TINYINT UNSIGNED NOT NULL DEFAULT 0 CHECK(deluser >= 0 AND deluser <= 1),
    ukey VARCHAR(50) UNIQUE NOT NULL DEFAULT ''
 );
@@ -177,7 +177,7 @@ CREATE TABLE cookit_goods_category(
 /*
 	상품 image Db
 	imgpk - 이미지 pk
-	goodspk - 해당상품
+	goodspk - 해당상품 pk
 	img - 이미지 명
 	defaultimage - 메인되는 기본 이미지 설정
 */
